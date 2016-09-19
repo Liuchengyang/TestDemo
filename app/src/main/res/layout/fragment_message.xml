@@ -14,7 +14,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="消息"
-            android:textSize="20dp" />
+            android:textSize="25dp" />
     </RelativeLayout>
 
     <TextView
@@ -24,9 +24,11 @@
 
     <RelativeLayout
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageView
+            android:layout_marginLeft="10dp"
             android:id="@+id/mess_direct_messages_img"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -49,6 +51,138 @@
             android:text="0条待处理消息"/>
 
     </RelativeLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray" />
+
+    <RelativeLayout
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_marginLeft="10dp"
+            android:id="@+id/mess_comments_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/comments"/>
+        <TextView
+            android:id="@+id/mess_comments_text"
+            android:layout_toRightOf="@+id/mess_comments_img"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="评论"/>
+
+
+    </RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray" />
+
+    <RelativeLayout
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_marginLeft="10dp"
+            android:id="@+id/mess_praise_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/praise"/>
+        <TextView
+            android:id="@+id/mess_praise_text"
+            android:layout_toRightOf="@+id/mess_praise_img"
+            android:layout_marginLeft="5dp"
+            android:textSize="20sp"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="赞"/>
+
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray" />
+
+    <RelativeLayout
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_marginLeft="10dp"
+            android:id="@+id/mess_assistant_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/assistant"/>
+        <TextView
+
+            android:id="@+id/mess_assistant_text"
+            android:layout_toRightOf="@+id/mess_assistant_img"
+            android:layout_marginLeft="5dp"
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="客服助手"/>
+        <TextView
+            android:id="@+id/mess_assistant_number"
+            android:layout_margin="5dp"
+            android:layout_toRightOf="@+id/mess_assistant_img"
+            android:layout_below="@+id/mess_assistant_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="快速及时为你解决问题"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray" />
+
+    <RelativeLayout
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_marginLeft="10dp"
+            android:id="@+id/mess_other_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/other"/>
+        <TextView
+            android:id="@+id/mess_other_text"
+            android:layout_toRightOf="@+id/mess_other_img"
+            android:layout_marginLeft="5dp"
+            android:textSize="20sp"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="其他消息"/>
+
+
+    </RelativeLayout>
+
+
+
+
+
+
+
+
+
 
 
 </LinearLayout>
