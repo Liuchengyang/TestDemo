@@ -1,5 +1,9 @@
-package com.lanou3g.newdemo.fragment;
+package com.lanou3g.newdemo.my;
 
+import android.support.v4.app.Fragment;
+import android.view.View;
+
+import com.lanou3g.newdemo.R;
 import com.lanou3g.newdemo.base.BaseFragment;
 
 /**
@@ -24,17 +28,17 @@ import com.lanou3g.newdemo.base.BaseFragment;
  * 　　　　　　　　　┗┓┓┏━┳┓┏┛ + + + +
  * 　　　　　　　　　　┃┫┫　┃┫┫
  * 　　　　　　　　　　┗┻┛　┗┻┛+ + + +
- * <p/>
+ * <p>
  * Created by 刘城羊 on 16/7/10.
  */
-public class AFragment extends BaseFragment {
+public class MyFragment extends BaseFragment {
     @Override
     protected int setLayout() {
-        return 0;
+        return R.layout.fragment_my;
     }
 
     @Override
-    protected void initView() {
+    protected void initView(View view) {
 
     }
 

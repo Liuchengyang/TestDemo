@@ -1,14 +1,10 @@
-package com.lanou3g.newdemo.base;
+package com.lanou3g.newdemo;
 
-import android.content.Context;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 
-import com.lanou3g.newdemo.R;
+import com.lanou3g.newdemo.base.TabInfo;
 
 /**
  * 　　　　　　　　┏┓　　　┏┓+ +
@@ -30,46 +26,31 @@ import com.lanou3g.newdemo.R;
  * 　　　　　　　　　┃ 　　　　　　　┣┓
  * 　　　　　　　　　┃ 　　　　　　　┏┛
  * 　　　　　　　　　┗┓┓┏━┳┓┏┛ + + + +
- * 　　　　　　　　　　┃┫┫　┃┫┫
+ * 　　　　　　　　　　┃┫┫　┃┫┫36
  * 　　　　　　　　　　┗┻┛　┗┻┛+ + + +
  * <p/>
  * Created by 刘城羊 on 16/7/10.
  */
-public abstract class BaseFragment extends Fragment {
+public class MainAdapter extends FragmentPagerAdapter {
 
-    protected Context mContext;
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        mContext =context;
+    public MainAdapter(FragmentManager fm) {
+        super(fm);
     }
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(setLayout(),container,false);
+    public Fragment getItem(int position) {
+        return TabInfo.getTabInfos().get(position).getF();
     }
 
-    protected  abstract int setLayout();
-
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        initView(view);
+    public int getCount() {
+        return TabInfo.getTabInfos().size();
+
     }
 
-    protected abstract void initView(View view);
-
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-        initData();
+    public CharSequence getPageTitle(int position) {
+        return TabInfo.getTabInfos().get(position).getTitle();
     }
-    protected abstract void initData();
-
-
-
-
 }

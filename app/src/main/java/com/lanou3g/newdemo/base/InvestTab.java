@@ -1,14 +1,14 @@
 package com.lanou3g.newdemo.base;
 
-import android.content.Context;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
-import com.lanou3g.newdemo.R;
+import com.lanou3g.newdemo.investment.twoFragment.InvestAllFragment;
+import com.lanou3g.newdemo.investment.twoFragment.InvestCompleteFragment;
+import com.lanou3g.newdemo.investment.twoFragment.InvestFinancingFragment;
+import com.lanou3g.newdemo.investment.twoFragment.InvestRaiseFragment;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 　　　　　　　　┏┓　　　┏┓+ +
@@ -32,44 +32,41 @@ import com.lanou3g.newdemo.R;
  * 　　　　　　　　　┗┓┓┏━┳┓┏┛ + + + +
  * 　　　　　　　　　　┃┫┫　┃┫┫
  * 　　　　　　　　　　┗┻┛　┗┻┛+ + + +
- * <p/>
+ * <p>
  * Created by 刘城羊 on 16/7/10.
  */
-public abstract class BaseFragment extends Fragment {
+public class InvestTab {
+    private String titles;
+    private Fragment f;
 
-    protected Context mContext;
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        mContext =context;
+    public InvestTab(String titles, Fragment f) {
+        this.titles = titles;
+        this.f = f;
     }
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(setLayout(),container,false);
+    public String getTitles() {
+        return titles;
     }
 
-    protected  abstract int setLayout();
-
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        initView(view);
+    public void setTitles(String titles) {
+        this.titles = titles;
     }
 
-    protected abstract void initView(View view);
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-        initData();
+    public Fragment getF() {
+        return f;
     }
-    protected abstract void initData();
 
+    public void setF(Fragment f) {
+        this.f = f;
+    }
 
+    public static List<InvestTab>getInvestTab(){
+        List<InvestTab>investTabs =new ArrayList<>();
+        investTabs.add(new InvestTab("全部",new InvestAllFragment()));
+        investTabs.add(new InvestTab("募资中",new InvestRaiseFragment()));
+        investTabs.add(new InvestTab("募资完成",new InvestCompleteFragment()));
+        investTabs.add(new InvestTab("融资成功",new InvestFinancingFragment()));
 
-
+        return investTabs;
+    }
 }

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:id="@+id/news_more_img"
+            android:layout_margin="@dimen/seven"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/more"/>
+        <TextView
+            android:layout_centerInParent="true"
+            android:id="@+id/news_titles"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="新闻"/>
+        <ImageView
+            android:id="@+id/news_check_img"
+            android:layout_margin="@dimen/seven"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/select_check"/>
+
+
+    </RelativeLayout>
+
+</LinearLayout>

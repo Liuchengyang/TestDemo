@@ -1,14 +1,10 @@
-package com.lanou3g.newdemo.base;
+package com.lanou3g.newdemo.investment.adapter;
 
-import android.content.Context;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 
-import com.lanou3g.newdemo.R;
+import com.lanou3g.newdemo.base.InvestTab;
 
 /**
  * 　　　　　　　　┏┓　　　┏┓+ +
@@ -32,44 +28,26 @@ import com.lanou3g.newdemo.R;
  * 　　　　　　　　　┗┓┓┏━┳┓┏┛ + + + +
  * 　　　　　　　　　　┃┫┫　┃┫┫
  * 　　　　　　　　　　┗┻┛　┗┻┛+ + + +
- * <p/>
+ * <p>
  * Created by 刘城羊 on 16/7/10.
  */
-public abstract class BaseFragment extends Fragment {
-
-    protected Context mContext;
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        mContext =context;
+public class InvestAdapter extends FragmentPagerAdapter {
+    public InvestAdapter(FragmentManager fm) {
+        super(fm);
     }
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(setLayout(),container,false);
+    public Fragment getItem(int position) {
+        return InvestTab.getInvestTab().get(position).getF();
     }
 
-    protected  abstract int setLayout();
-
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        initView(view);
+    public int getCount() {
+        return InvestTab.getInvestTab().size();
     }
 
-    protected abstract void initView(View view);
-
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-        initData();
+    public CharSequence getPageTitle(int position) {
+        return InvestTab.getInvestTab().get(position).getTitles();
     }
-    protected abstract void initData();
-
-
-
-
 }

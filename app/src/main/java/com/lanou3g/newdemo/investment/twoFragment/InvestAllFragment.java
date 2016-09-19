@@ -1,14 +1,10 @@
-package com.lanou3g.newdemo.base;
+package com.lanou3g.newdemo.investment.twoFragment;
 
-import android.content.Context;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.lanou3g.newdemo.R;
+import com.lanou3g.newdemo.base.BaseFragment;
 
 /**
  * 　　　　　　　　┏┓　　　┏┓+ +
@@ -32,44 +28,22 @@ import com.lanou3g.newdemo.R;
  * 　　　　　　　　　┗┓┓┏━┳┓┏┛ + + + +
  * 　　　　　　　　　　┃┫┫　┃┫┫
  * 　　　　　　　　　　┗┻┛　┗┻┛+ + + +
- * <p/>
+ * <p>
  * Created by 刘城羊 on 16/7/10.
  */
-public abstract class BaseFragment extends Fragment {
-
-    protected Context mContext;
-
+public class InvestAllFragment extends BaseFragment {
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        mContext =context;
+    protected int setLayout() {
+        return R.layout.fragment_invest_all;
     }
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(setLayout(),container,false);
+    protected void initView(View view) {
+
     }
 
-    protected  abstract int setLayout();
-
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        initView(view);
+    protected void initData() {
+
     }
-
-    protected abstract void initView(View view);
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-        initData();
-    }
-    protected abstract void initData();
-
-
-
-
 }
