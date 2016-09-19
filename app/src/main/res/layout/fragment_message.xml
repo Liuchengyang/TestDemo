@@ -1,6 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+        <TextView
+            android:id="@+id/mess_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="消息"
+            android:textSize="20dp" />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray" />
+
+    <RelativeLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/mess_direct_messages_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/direct_messages"/>
+        <TextView
+            android:id="@+id/mess_direct_messages_text"
+            android:layout_toRightOf="@+id/mess_direct_messages_img"
+            android:layout_marginLeft="5dp"
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="私信"/>
+        <TextView
+            android:id="@+id/mess_direct_messages_number"
+            android:layout_margin="5dp"
+            android:layout_toRightOf="@+id/mess_direct_messages_img"
+            android:layout_below="@+id/mess_direct_messages_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0条待处理消息"/>
+
+    </RelativeLayout>
+
 
 </LinearLayout>

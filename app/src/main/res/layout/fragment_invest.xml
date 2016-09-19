@@ -31,11 +31,19 @@
             android:background="@drawable/select_check"/>
 
     </RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray" />
 
     <android.support.design.widget.TabLayout
         android:id="@+id/invest_tab"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray" />
     <android.support.v4.view.ViewPager
         android:id="@+id/invest_view_pager"
         android:layout_width="match_parent"
