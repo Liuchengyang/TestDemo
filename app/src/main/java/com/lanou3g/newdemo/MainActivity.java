@@ -1,13 +1,25 @@
 package com.lanou3g.newdemo;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+import com.lanou3g.newdemo.base.BaseAty;
+
+public class MainActivity extends BaseAty {
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    protected int setLayout() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    protected void initView() {
+        TextView textView =bindView(R.id.text_view);
+
+    }
+
+    @Override
+    protected void initData() {
+
     }
 }
