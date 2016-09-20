@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/news_list_item_img"
+        android:layout_width="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_launcher"/>
+    <TextView
+        android:id="@+id/news_list_item_title"
+        android:layout_toRightOf="@+id/news_list_item_img"
+        android:maxLines="2"
+        android:textSize="11sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="asdasd"/>
+    <TextView
+        android:id="@+id/news_list_item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="11sp"
+        android:layout_toRightOf="@+id/news_list_item_img"
+        android:layout_below="@+id/news_list_item_title"
+        android:text="sadas"/>
+
+    <TextView
+        android:id="@+id/news_list_item_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:textSize="11sp"
+        android:layout_toRightOf="@+id/news_list_item_name"
+        android:layout_below="@+id/news_list_item_title"
+        android:text="asdasdasd"/>
+
+
+    <TextView
+        android:id="@+id/news_list_item_comname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="11sp"
+        android:layout_below="@+id/news_list_item_title"
+        android:layout_alignParentRight="true"
+        android:text="sadasdas"/>
+</RelativeLayout>

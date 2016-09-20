@@ -1,12 +1,12 @@
-package com.lanou3g.newdemo.activity;
+package com.lanou3g.newdemo.base;
 
-import android.graphics.Color;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
+import android.support.v4.app.Fragment;
 
-import com.lanou3g.newdemo.R;
-import com.lanou3g.newdemo.activity.adapter.MessFragmentAdapter;
-import com.lanou3g.newdemo.base.BaseAty;
+import com.lanou3g.newdemo.activity.fragment.LoginFragment;
+import com.lanou3g.newdemo.activity.fragment.RegisteredFragment;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 　　　　　　　　┏┓　　　┏┓+ +
@@ -33,28 +33,35 @@ import com.lanou3g.newdemo.base.BaseAty;
  * <p>
  * Created by 刘城羊 on 16/7/10.
  */
-public class MessActivity extends BaseAty {
-    private ViewPager viewPager;
-    private TabLayout tabLayout;
-    private MessFragmentAdapter messFragmentAdapteradapter;
-    @Override
-    protected int setLayout() {
-        return R.layout.activity_mess;
+public class MessAtyTab {
+    private String titles;
+    private Fragment f;
+
+    public MessAtyTab(String titles, Fragment f) {
+        this.titles = titles;
+        this.f = f;
     }
 
-    @Override
-    protected void initView() {
-        viewPager = (ViewPager) findViewById(R.id.mess_view_pager);
-        tabLayout = (TabLayout) findViewById(R.id.mess_tab_layout);
-
+    public Fragment getF() {
+        return f;
     }
 
-    @Override
-    protected void initData() {
-        messFragmentAdapteradapter = new MessFragmentAdapter(getSupportFragmentManager());
-        viewPager.setAdapter(messFragmentAdapteradapter);
-        tabLayout.setupWithViewPager(viewPager);
-        tabLayout.setTabTextColors(Color.BLUE,Color.WHITE);
+    public void setF(Fragment f) {
+        this.f = f;
+    }
 
+    public String getTitles() {
+        return titles;
+    }
+
+    public void setTitles(String titles) {
+        this.titles = titles;
+    }
+
+    public static List<MessAtyTab>getMessAtyTabs(){
+        List<MessAtyTab>messAtyTabs =new ArrayList<>();
+        messAtyTabs.add(new MessAtyTab("登录",new LoginFragment()));
+        messAtyTabs.add(new MessAtyTab("注册",new RegisteredFragment()));
+        return messAtyTabs;
     }
 }

@@ -1,12 +1,10 @@
-package com.lanou3g.newdemo.activity;
+package com.lanou3g.newdemo.activity.fragment;
 
-import android.graphics.Color;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
+import android.support.v4.app.Fragment;
+import android.view.View;
 
 import com.lanou3g.newdemo.R;
-import com.lanou3g.newdemo.activity.adapter.MessFragmentAdapter;
-import com.lanou3g.newdemo.base.BaseAty;
+import com.lanou3g.newdemo.base.BaseFragment;
 
 /**
  * 　　　　　　　　┏┓　　　┏┓+ +
@@ -33,28 +31,19 @@ import com.lanou3g.newdemo.base.BaseAty;
  * <p>
  * Created by 刘城羊 on 16/7/10.
  */
-public class MessActivity extends BaseAty {
-    private ViewPager viewPager;
-    private TabLayout tabLayout;
-    private MessFragmentAdapter messFragmentAdapteradapter;
+public class RegisteredFragment extends BaseFragment {
     @Override
     protected int setLayout() {
-        return R.layout.activity_mess;
+        return R.layout.fragment_registered;
     }
 
     @Override
-    protected void initView() {
-        viewPager = (ViewPager) findViewById(R.id.mess_view_pager);
-        tabLayout = (TabLayout) findViewById(R.id.mess_tab_layout);
+    protected void initView(View view) {
 
     }
 
     @Override
     protected void initData() {
-        messFragmentAdapteradapter = new MessFragmentAdapter(getSupportFragmentManager());
-        viewPager.setAdapter(messFragmentAdapteradapter);
-        tabLayout.setupWithViewPager(viewPager);
-        tabLayout.setTabTextColors(Color.BLUE,Color.WHITE);
 
     }
 }

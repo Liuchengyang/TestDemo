@@ -1,6 +1,153 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/found_cha_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_margin="7dp"
+                    android:src="@mipmap/cha" />
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/found_view_pager"
+                    android:layout_width="match_parent"
+                    android:layout_height="140dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <ImageView
+                    android:id="@+id/found_leaves_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:background="@mipmap/leaves" />
+
+                <TextView
+                    android:id="@+id/found_leaves_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/found_leaves_img"
+                    android:layout_marginLeft="35dp"
+                    android:text="创业公司"
+                    android:textSize="12sp" />
+
+
+                <ImageView
+                    android:id="@+id/found_home_img"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:background="@mipmap/home" />
+
+                <TextView
+                    android:id="@+id/found_home_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/found_home_img"
+                    android:layout_centerHorizontal="true"
+                    android:text="36氪研究院"
+                    android:textSize="12sp" />
+
+                <ImageView
+                    android:id="@+id/found_activity_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="40dp"
+                    android:background="@mipmap/activity" />
+
+                <TextView
+                    android:id="@+id/found_activity_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@id/found_activity_img"
+                    android:layout_marginRight="35dp"
+                    android:layout_marginTop="3dp"
+                    android:text="近期活动"
+                    android:textSize="12sp" />
+
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+            <RelativeLayout
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/found_days_img"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:src="@mipmap/found_days"/>
+                <TextView
+                    android:id="@+id/found_money"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:text="投资金额"/>
+                <TextView
+                    android:id="@+id/found_person"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_below="@+id/found_money"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:text="认购人数"/>
+
+                <TextView
+                    android:id="@+id/found_hot"
+                    android:layout_marginTop="60dp"
+                    android:layout_below="@+id/found_days_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:text="热门项目"/>
+
+                <TextView
+                    android:layout_below="@+id/found_person"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:text="查看全部"/>
+
+
+
+
+
+            </RelativeLayout>
+
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

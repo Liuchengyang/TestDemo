@@ -5,6 +5,7 @@
     android:orientation="vertical">
 
     <RelativeLayout
+        android:id="@+id/fragment_mess_relative"
         android:layout_width="match_parent"
         android:layout_height="60dp">
 
