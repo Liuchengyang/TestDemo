@@ -18,6 +18,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/found_view_pager"
+                    android:layout_width="match_parent"
+                    android:layout_height="140dp" />
                 <ImageView
                     android:id="@+id/found_cha_img"
                     android:layout_width="wrap_content"
@@ -25,18 +31,13 @@
                     android:layout_alignParentRight="true"
                     android:layout_margin="7dp"
                     android:src="@mipmap/cha" />
-
-                <android.support.v4.view.ViewPager
-                    android:id="@+id/found_view_pager"
-                    android:layout_width="match_parent"
-                    android:layout_height="140dp" />
-
             </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp">
+                android:paddingBottom="20dp"
+                android:paddingTop="20dp">
 
                 <ImageView
                     android:id="@+id/found_leaves_img"
@@ -96,58 +97,345 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="10dp" />
+                android:layout_height="8dp"
+                android:background="#fdd1cecf" />
+
             <RelativeLayout
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="10dp">
+
                 <ImageView
                     android:id="@+id/found_days_img"
                     android:layout_width="80dp"
                     android:layout_height="40dp"
-                    android:src="@mipmap/found_days"/>
+                    android:src="@mipmap/found_days" />
+
                 <TextView
                     android:id="@+id/found_money"
-                    android:layout_alignParentRight="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="12sp"
-                    android:text="投资金额"/>
+                    android:layout_alignParentRight="true"
+                    android:text="投资金额"
+                    android:textSize="12sp" />
+
                 <TextView
                     android:id="@+id/found_person"
-                    android:layout_alignParentRight="true"
                     android:layout_width="wrap_content"
-                    android:layout_below="@+id/found_money"
                     android:layout_height="wrap_content"
-                    android:textSize="12sp"
-                    android:text="认购人数"/>
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/found_money"
+                    android:text="认购人数"
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/found_hot"
-                    android:layout_marginTop="60dp"
-                    android:layout_below="@+id/found_days_img"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="12sp"
-                    android:text="热门项目"/>
+                    android:layout_below="@+id/found_days_img"
+                    android:layout_marginTop="60dp"
+                    android:text="热门项目"
+                    android:textSize="12sp" />
 
                 <TextView
-                    android:layout_below="@+id/found_person"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentRight="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="12sp"
-                    android:text="查看全部"/>
+                    android:layout_alignParentBottom="true"
+                    android:layout_below="@+id/found_person"
+                    android:layout_toLeftOf="@+id/found_parentheses2_img"
+                    android:text="查看全部"
+                    android:textSize="12sp" />
 
+                <ImageView
+                    android:id="@+id/found_parentheses2_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:src="@mipmap/parentheses2" />
 
+                <TextView
+                    android:id="@+id/found_money_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@+id/found_money"
+                    android:text="8,123,000元"
+                    android:textColor="#f1977105"
 
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/found_money_number"
+                    android:layout_toLeftOf="@+id/found_person"
+                    android:text="65人"
+                    android:textColor="#f1977105"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="21小时前收到来自北京市永无的认购订单"
+                    android:textSize="9sp" />
 
 
             </RelativeLayout>
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="10dp">
+
+                <ImageView
+                    android:id="@+id/found_three_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ic_launcher" />
+
+                <TextView
+                    android:id="@+id/found_three_one_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/found_three_img"
+                    android:text="修机100" />
+
+                <TextView
+                    android:id="@+id/found_three_two_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/found_three_one_text"
+                    android:layout_toRightOf="@+id/found_three_img"
+                    android:text="手机服务专家"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/found_three_three_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/found_three_two_text"
+                    android:layout_marginTop="20dp"
+                    android:layout_toRightOf="@+id/found_three_img"
+                    android:text="创始人:连续成功创业者"
+                    android:textColor="#ddc76b20"
+                    android:textSize="10dp" />
+
+                <TextView
+                    android:id="@+id/found_three_four_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/found_three_img"
+                    android:layout_marginTop="60dp"
+                    android:text="投资速递"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/found_three_five_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:textSize="12sp"
+                    android:layout_toLeftOf="@+id/found_three_parentheses2_img"
+                    android:text="快速了解股权投资" />
+
+                <ImageView
+                    android:id="@+id/found_three_parentheses2_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:src="@mipmap/parentheses2" />
+
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="行业新闻"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="项目动态"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="投资活动"
+                    android:textSize="12sp" />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#d1d0d0"
+                android:padding="20dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#ddf4f0f0"
+                    android:orientation="vertical"
+                    android:padding="15dp">
+
+
+                    <TextView
+                        android:id="@+id/found_four_one_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="发现好项目"
+                        android:textColor="@android:color/holo_blue_dark" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/found_four_one_text"
+                        android:layout_marginTop="10dp"
+                        android:text="投资人每天都在看"
+                        android:textSize="10sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:background="#ddf4f0f0"
+                    android:orientation="vertical"
+                    android:padding="15dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="寻找投资人"
+                        android:textColor="@android:color/holo_blue_dark" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="顶级机构全面入驻"
+                        android:textSize="10sp" />
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="7dp">
+
+                <ImageView
+                    android:id="@+id/found_person_head_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:src="@mipmap/person_head" />
+
+                <TextView
+                    android:id="@+id/found_person_head_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@+id/found_person_head_img"
+                    android:text="我是创业者"
+                    android:textSize="10sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="15dp"
+                    android:src="@mipmap/parentheses2" />
+
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="7dp">
+
+                <ImageView
+                    android:id="@+id/found_briefcase_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:src="@mipmap/briefcase" />
+
+                <TextView
+                    android:id="@+id/found_briefcase_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@+id/found_briefcase_img"
+                    android:text="我是专业投资人"
+                    android:textSize="10sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="15dp"
+                    android:src="@mipmap/parentheses2" />
+
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
         </LinearLayout>
+
+
     </ScrollView>
 
 </LinearLayout>

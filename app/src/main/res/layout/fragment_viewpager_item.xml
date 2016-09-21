@@ -3,9 +3,11 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ListView
-        android:id="@+id/complete_list_view"
+    <ImageView
+        android:id="@+id/found_view_pager_img"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:scaleType="fitXY"
+        android:layout_height="150dp"
+        android:background="@mipmap/ic_launcher"/>
 
 </LinearLayout>

@@ -70,6 +70,8 @@ public class NewsFragment extends BaseFragment implements View.OnClickListener {
         return R.layout.fragment_news;
     }
 
+
+
     @Override
     protected void initView(View view) {
         news_more_img = (ImageView) view.findViewById(R.id.news_more_img);
