@@ -2,6 +2,7 @@ package com.lanou3g.newdemo.news.adapter;
 
 import android.content.Context;
 import android.content.res.ObbInfo;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -85,7 +86,13 @@ public class NewsListAdapter extends BaseAdapter {
         Picasso.with(context).load(newsListBean.getData().getData().get(i).getFeatureImg()).into(holder.news_list_item_img);
 
         holder.news_list_item_title.setText(newsListBean.getData().getData().get(i).getTitle());
-        holder.news_list_item_name.setText(newsListBean.getData().getData().get(i).getUser().getName());
+        if (newsListBean.getData().getData().get(i).getUser() != null) {
+            Log.d("NewsListAdapter", "bukong");
+        }
+        else {
+            Log.d("NewsListAdapter", "kong");
+        }
+//        holder.news_list_item_name.setText(newsListBean.getData().getData().get(i).getUser().getName());
         holder.news_list_item_time.setText(format.format(date));
         holder.news_list_item_comname.setText(newsListBean.getData().getData().get(i).getColumnName());
         return view;

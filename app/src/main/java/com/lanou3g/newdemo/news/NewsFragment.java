@@ -1,5 +1,6 @@
 package com.lanou3g.newdemo.news;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.ViewPager;
@@ -10,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -18,12 +20,17 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.lanou3g.newdemo.R;
+import com.lanou3g.newdemo.activity.NewsLBActivity;
 import com.lanou3g.newdemo.base.BaseFragment;
 import com.lanou3g.newdemo.base.StringUrl;
 import com.lanou3g.newdemo.news.adapter.NewsLBAdapter;
 import com.lanou3g.newdemo.news.adapter.NewsListAdapter;
 import com.lanou3g.newdemo.news.bean.NewsLBBean;
 import com.lanou3g.newdemo.news.bean.NewsListBean;
+import com.lanou3g.newdemo.volley.VolleySingleton;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 　　　　　　　　┏┓　　　┏┓+ +
@@ -55,7 +62,7 @@ public class NewsFragment extends BaseFragment implements View.OnClickListener {
     private DrawerLayout drawerLayout;
     private NewsLBAdapter newsListAdapter;
 
-
+    public static List<String> strUrl = new ArrayList<>();
     private ListView listView;
     private NewsListAdapter newsAdapter;
     private ViewPager viewPager;
@@ -63,13 +70,23 @@ public class NewsFragment extends BaseFragment implements View.OnClickListener {
     private boolean mFalg = true;
     private boolean flag = true;
     private View headView;
+    private TextView textViewNews;
+    private ImageView iv_all;
+    private ImageView iv_early;
+    private ImageView iv_bturn;
+    private ImageView bigcompany;
+    private ImageView iv_money;
+    private ImageView iv_height;
+    private ImageView iv_learn;
+    private ImageView iv_tv;
+    private NewsLBBean newsLBBean;
 
+    private ImageView news_item_image;
 
     @Override
     protected int setLayout() {
         return R.layout.fragment_news;
     }
-
 
 
     @Override
@@ -81,7 +98,29 @@ public class NewsFragment extends BaseFragment implements View.OnClickListener {
         listView = (ListView) view.findViewById(R.id.news_list_view);
         headView = LayoutInflater.from(getContext()).inflate(R.layout.fragment_news_lunbo, null);
         viewPager = (ViewPager) headView.findViewById(R.id.news_lunbo_view_pager);
+
         listView.addHeaderView(headView);
+
+
+        textViewNews = (TextView) view.findViewById(R.id.news_titles);
+        iv_all = (ImageView) view.findViewById(R.id.iv_all);
+        iv_early = (ImageView) view.findViewById(R.id.iv_early);
+        iv_bturn = (ImageView) view.findViewById(R.id.iv_bturn);
+        bigcompany = (ImageView) view.findViewById(R.id.bigcompany);
+        iv_money = (ImageView) view.findViewById(R.id.iv_money);
+        iv_height = (ImageView) view.findViewById(R.id.iv_height);
+        iv_learn = (ImageView) view.findViewById(R.id.iv_learn);
+        iv_tv = (ImageView) view.findViewById(R.id.iv_tv);
+
+
+        iv_all.setOnClickListener(this);
+        iv_early.setOnClickListener(this);
+        iv_bturn.setOnClickListener(this);
+        bigcompany.setOnClickListener(this);
+        iv_money.setOnClickListener(this);
+        iv_height.setOnClickListener(this);
+        iv_learn.setOnClickListener(this);
+        iv_tv.setOnClickListener(this);
 
 
     }
@@ -93,8 +132,21 @@ public class NewsFragment extends BaseFragment implements View.OnClickListener {
         initLunBo();
         initSpeed();
         initList();
-        news_more_img.setOnClickListener(this);
-        iv_back.setOnClickListener(this);
+        news_more_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                drawerLayout.openDrawer(Gravity.LEFT);
+
+            }
+        });
+        iv_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                drawerLayout.closeDrawers();
+
+            }
+        });
+
 
     }
 
@@ -132,6 +184,13 @@ public class NewsFragment extends BaseFragment implements View.OnClickListener {
                 newsListAdapter.setNewsLBBean(bean);
                 viewPager.setAdapter(newsListAdapter);
                 newsListAdapter.setPager(viewPager);
+                viewPager.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                    
+                    }
+                });
+
 
 
             }
@@ -175,18 +234,88 @@ public class NewsFragment extends BaseFragment implements View.OnClickListener {
 
     }
 
+    public void request(String url) {
+        RequestQueue queue = Volley.newRequestQueue(getContext());
+        StringRequest stringRequest = new StringRequest(url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Gson gson = new Gson();
+                NewsListBean bean = gson.fromJson(response, NewsListBean.class);
+                newsAdapter.setNewsListBean(bean);
+                listView.setAdapter(newsAdapter);
+
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        queue.add(stringRequest);
+
+
+
+    }
+
+
+
+
     @Override
     public void onClick(View view) {
+        drawerLayout.closeDrawers();
+
+        listView.removeHeaderView(headView);
+
         switch (view.getId()) {
-            case R.id.news_more_img:
-                drawerLayout.openDrawer(Gravity.LEFT);
+            case R.id.iv_all:
+                textViewNews.setText("新闻");
+                listView.addHeaderView(headView);
+                request(StringUrl.stringFragmentNEwsAll);
+
+
                 break;
-            case R.id.iv_back:
-                drawerLayout.closeDrawers();
+            case R.id.iv_early:
+
+
+                textViewNews.setText("早期项目");
+                request(StringUrl.stringFragmentNEwsEarly);
+                break;
+            case R.id.iv_bturn:
+
+
+                textViewNews.setText("B轮后");
+                request(StringUrl.stringFragmentNewsBTurn);
+                break;
+            case R.id.bigcompany:
+
+
+                textViewNews.setText("大公司");
+                request(StringUrl.stringFragmentNewsBigCompany);
+                break;
+            case R.id.iv_money:
+
+                textViewNews.setText("资本");
+
+                request(StringUrl.stringFragmentNewsMoney);
+                break;
+            case R.id.iv_height:
+
+
+                textViewNews.setText("深度");
+                request(StringUrl.stringFragmentNewsHeight);
+                break;
+            case R.id.iv_learn:
+
+
+                textViewNews.setText("研究");
+                request(StringUrl.stringFragmentNewsLearn);
+                break;
 
 
         }
 
 
     }
+
 }
