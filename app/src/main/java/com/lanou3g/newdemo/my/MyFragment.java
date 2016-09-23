@@ -1,10 +1,17 @@
 package com.lanou3g.newdemo.my;
 
-import android.support.v4.app.Fragment;
+import android.content.Intent;
+import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.lanou3g.newdemo.R;
+import com.lanou3g.newdemo.activity.MyPhoneActivity;
+import com.lanou3g.newdemo.activity.MySetActivity;
 import com.lanou3g.newdemo.base.BaseFragment;
+
 
 /**
  * 　　　　　　　　┏┓　　　┏┓+ +
@@ -31,7 +38,9 @@ import com.lanou3g.newdemo.base.BaseFragment;
  * <p>
  * Created by 刘城羊 on 16/7/10.
  */
-public class MyFragment extends BaseFragment {
+public class MyFragment extends BaseFragment implements View.OnClickListener {
+    private RelativeLayout my_hotline_layout;
+    private ImageView my_system_img;
     @Override
     protected int setLayout() {
         return R.layout.fragment_my;
@@ -39,11 +48,32 @@ public class MyFragment extends BaseFragment {
 
     @Override
     protected void initView(View view) {
+        my_hotline_layout = (RelativeLayout) view.findViewById(R.id.my_hotline_layout);
+        my_system_img = (ImageView) view.findViewById(R.id.my_system_img);
 
     }
 
     @Override
     protected void initData() {
+        my_hotline_layout.setOnClickListener(this);
+        my_system_img.setOnClickListener(this);
+
+
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.my_hotline_layout:
+                Intent intent =new Intent(MyFragment.this.getActivity(),MyPhoneActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.my_system_img:
+                Intent intentSet =new Intent(MyFragment.this.getActivity(),MySetActivity.class);
+                startActivity(intentSet);
+                break;
+
+        }
 
     }
 }

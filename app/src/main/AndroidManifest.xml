@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.lanou3g.newdemo">
 
+
+    <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:name=".app.MyApp"
@@ -19,6 +21,11 @@
         </activity>
         <activity android:name=".activity.MessActivity"/>
         <activity android:name=".activity.NewsLBActivity"/>
+        <activity android:name=".activity.NewsCheckActivity"/>
+        <activity android:name=".activity.NewsListActivity"/>
+        <activity android:name=".activity.MoreActivity" android:theme="@style/MyDialogStyleBottom"/>
+        <activity android:name=".activity.MyPhoneActivity" android:theme="@style/MyDialogStyleBottom"/>
+        <activity android:name=".activity.MySetActivity"/>
     </application>
 
 </manifest>

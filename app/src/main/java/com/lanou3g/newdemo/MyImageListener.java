@@ -1,10 +1,11 @@
-package com.lanou3g.newdemo.app;
+package com.lanou3g.newdemo;
 
-import android.app.Application;
-import android.content.Context;
-import android.support.v4.app.Fragment;
+import android.graphics.Bitmap;
+import android.view.animation.AlphaAnimation;
+import android.widget.ImageView;
 
-import java.util.List;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageLoader;
 
 /**
  * 　　　　　　　　┏┓　　　┏┓+ +
@@ -31,32 +32,31 @@ import java.util.List;
  * <p>
  * Created by 刘城羊 on 16/7/10.
  */
-public class MyApp extends Application {
-    private static Context mContext;
-    private static boolean user;
-    private static List<Fragment>sFragments;
+public class MyImageListener implements ImageLoader.ImageListener {
+    private ImageView imageView;
+    @Override
+    public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
+        Bitmap bitmap = response.getBitmap();
+        if (bitmap == null){
+            imageView.setImageResource(R.mipmap.ic_launcher);
+        }else {
+            CircleDrawable circleDrawable = new CircleDrawable(bitmap);
+            imageView.setImageDrawable(circleDrawable);
+            AlphaAnimation alphaAnimation = new AlphaAnimation(0,1);
+            alphaAnimation.setDuration(5000);
+            imageView.setAnimation(alphaAnimation);
+            alphaAnimation.start();
+        }
+
+    }
+
+    public MyImageListener(ImageView imageView) {
+        this.imageView = imageView;
+    }
 
     @Override
-    public void onCreate() {
-        super.onCreate();
-        mContext =this;
+    public void onErrorResponse(VolleyError error) {
+        imageView.setImageResource(R.mipmap.ic_launcher);
 
     }
-    public static Context getContext(){
-        return mContext;
-    }
-
-    public static void setBoolean(boolean falg) {
-        user = falg;
-    }
-    public  static boolean getFlag(){
-        return user;
-    }
-    public static void addFragment(Fragment fragment){
-        sFragments.add(fragment);
-    }
-    public static List<Fragment> getsFragment(){
-        return sFragments;
-    }
-
 }

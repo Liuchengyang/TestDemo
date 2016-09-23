@@ -1,10 +1,7 @@
-package com.lanou3g.newdemo.app;
+package com.lanou3g.newdemo.activity;
 
-import android.app.Application;
-import android.content.Context;
-import android.support.v4.app.Fragment;
-
-import java.util.List;
+import com.lanou3g.newdemo.R;
+import com.lanou3g.newdemo.base.BaseAty;
 
 /**
  * 　　　　　　　　┏┓　　　┏┓+ +
@@ -31,32 +28,19 @@ import java.util.List;
  * <p>
  * Created by 刘城羊 on 16/7/10.
  */
-public class MyApp extends Application {
-    private static Context mContext;
-    private static boolean user;
-    private static List<Fragment>sFragments;
+public class NewsCheckActivity  extends BaseAty{
+    @Override
+    protected int setLayout() {
+        return R.layout.activity_news_check;
+    }
 
     @Override
-    public void onCreate() {
-        super.onCreate();
-        mContext =this;
+    protected void initView() {
 
     }
-    public static Context getContext(){
-        return mContext;
-    }
 
-    public static void setBoolean(boolean falg) {
-        user = falg;
-    }
-    public  static boolean getFlag(){
-        return user;
-    }
-    public static void addFragment(Fragment fragment){
-        sFragments.add(fragment);
-    }
-    public static List<Fragment> getsFragment(){
-        return sFragments;
-    }
+    @Override
+    protected void initData() {
 
+    }
 }

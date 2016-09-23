@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+
+    <TextView
+        android:id="@+id/tv_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#faf7f7"
+        android:gravity="center"
+        android:text="工作日: 10:00-19:00"
+        android:textColor="#afaaaa"
+        android:textSize="12sp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#8f8e8e"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#faf7f7"
+        android:gravity="center"
+        android:text="呼叫400-995-3636"
+        android:textColor="#474adf"
+        android:textSize="15sp"
+        android:id="@+id/tv_tell_custom"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#8f8e8e"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#faf7f7"
+        android:gravity="center"
+        android:text="取消"
+        android:textColor="#afaaaa"
+        android:textSize="17sp"
+        android:id="@+id/tv_cancel"
+        />
+
+
+    </LinearLayout>
+
+</LinearLayout>

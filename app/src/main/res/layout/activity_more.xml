@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal">
+
+
+
+    <RelativeLayout
+        android:id="@+id/activity_more_layout"
+       android:layout_above="@+id/more_layout"
+        android:layout_width="match_parent"
+        android:background="@android:color/white"
+        android:layout_centerHorizontal="true"
+        android:layout_height="150dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="字体大小"
+        android:textSize="17sp"
+        android:layout_margin="20dp"
+        android:id="@+id/tv_size"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_small"
+        android:text="小"
+        android:textSize="17sp"
+        android:layout_toRightOf="@+id/tv_size"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="20dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_middle"
+        android:text="中"
+        android:textSize="17sp"
+        android:layout_toRightOf="@+id/tv_small"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_big"
+        android:text="大"
+        android:textSize="17sp"
+        android:layout_toRightOf="@+id/tv_middle"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_verybig"
+        android:text="超大"
+        android:textSize="17sp"
+        android:layout_toRightOf="@+id/tv_big"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="屏幕亮度"
+        android:layout_below="@+id/tv_size"
+        android:layout_margin="20dp"
+        android:textSize="17sp"
+        android:id="@+id/tv_light"
+        />
+    <SeekBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sb_light"
+        android:layout_below="@+id/tv_small"
+        android:layout_toRightOf="@+id/tv_light"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="30dp"
+        android:layout_alignParentRight="true"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        />
+
+    </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/more_layout"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
+
+</RelativeLayout>

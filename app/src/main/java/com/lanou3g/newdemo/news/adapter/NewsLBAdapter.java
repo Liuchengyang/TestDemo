@@ -1,6 +1,7 @@
 package com.lanou3g.newdemo.news.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
@@ -11,6 +12,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
 import com.lanou3g.newdemo.R;
+import com.lanou3g.newdemo.activity.NewsLBActivity;
+import com.lanou3g.newdemo.news.NewsFragment;
 import com.lanou3g.newdemo.news.bean.NewsLBBean;
 import com.squareup.picasso.Picasso;
 
@@ -74,9 +77,11 @@ public class NewsLBAdapter extends PagerAdapter {
 
 
         Picasso.with(context).load(newsLBBean.getData().getPics().get(position %newsLBBean.getData().getPics().size()).getImgUrl()).into(imageView);
-
-
         container.addView(view);
+
+
+
+
         return view;
 
     }

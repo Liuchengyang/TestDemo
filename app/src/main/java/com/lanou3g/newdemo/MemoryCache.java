@@ -1,10 +1,9 @@
-package com.lanou3g.newdemo.app;
+package com.lanou3g.newdemo;
 
-import android.app.Application;
-import android.content.Context;
-import android.support.v4.app.Fragment;
+import android.graphics.Bitmap;
+import android.util.LruCache;
 
-import java.util.List;
+import com.android.volley.toolbox.ImageLoader;
 
 /**
  * 　　　　　　　　┏┓　　　┏┓+ +
@@ -31,32 +30,27 @@ import java.util.List;
  * <p>
  * Created by 刘城羊 on 16/7/10.
  */
-public class MyApp extends Application {
-    private static Context mContext;
-    private static boolean user;
-    private static List<Fragment>sFragments;
+public class MemoryCache implements ImageLoader.ImageCache {
+
+    private LruCache<String, Bitmap> lruCache;
+
+    public MemoryCache() {
+        int maxSize = (int) ((Runtime.getRuntime().maxMemory()) / 8);
+        lruCache = new LruCache<String, Bitmap>(maxSize) {
+            @Override
+            protected int sizeOf(String key, Bitmap value) {
+                return value.getRowBytes();
+            }
+        };
+    }
 
     @Override
-    public void onCreate() {
-        super.onCreate();
-        mContext =this;
-
-    }
-    public static Context getContext(){
-        return mContext;
+    public Bitmap getBitmap(String url) {
+        return lruCache.get(url);
     }
 
-    public static void setBoolean(boolean falg) {
-        user = falg;
+    @Override
+    public void putBitmap(String url, Bitmap bitmap) {
+        lruCache.put(url, bitmap);
     }
-    public  static boolean getFlag(){
-        return user;
-    }
-    public static void addFragment(Fragment fragment){
-        sFragments.add(fragment);
-    }
-    public static List<Fragment> getsFragment(){
-        return sFragments;
-    }
-
 }

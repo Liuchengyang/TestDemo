@@ -1,10 +1,10 @@
-package com.lanou3g.newdemo.app;
+package com.lanou3g.newdemo.activity;
 
-import android.app.Application;
-import android.content.Context;
-import android.support.v4.app.Fragment;
+import android.view.View;
+import android.widget.ImageView;
 
-import java.util.List;
+import com.lanou3g.newdemo.R;
+import com.lanou3g.newdemo.base.BaseAty;
 
 /**
  * 　　　　　　　　┏┓　　　┏┓+ +
@@ -31,32 +31,32 @@ import java.util.List;
  * <p>
  * Created by 刘城羊 on 16/7/10.
  */
-public class MyApp extends Application {
-    private static Context mContext;
-    private static boolean user;
-    private static List<Fragment>sFragments;
+public class MySetActivity  extends BaseAty implements View.OnClickListener {
+    private ImageView iv_findgoodproject_back_setting;
+    @Override
+    protected int setLayout() {
+        return R.layout.activity_my_set;
+    }
 
     @Override
-    public void onCreate() {
-        super.onCreate();
-        mContext =this;
+    protected void initView() {
+        iv_findgoodproject_back_setting = (ImageView) findViewById(R.id.iv_findgoodproject_back_setting);
 
     }
-    public static Context getContext(){
-        return mContext;
+
+    @Override
+    protected void initData() {
+        iv_findgoodproject_back_setting.setOnClickListener(this);
+
     }
 
-    public static void setBoolean(boolean falg) {
-        user = falg;
-    }
-    public  static boolean getFlag(){
-        return user;
-    }
-    public static void addFragment(Fragment fragment){
-        sFragments.add(fragment);
-    }
-    public static List<Fragment> getsFragment(){
-        return sFragments;
-    }
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.iv_findgoodproject_back_setting:
+                finish();
+                break;
+        }
 
+    }
 }

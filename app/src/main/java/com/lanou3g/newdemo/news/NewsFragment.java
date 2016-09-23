@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -20,7 +21,9 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.lanou3g.newdemo.R;
+import com.lanou3g.newdemo.activity.NewsCheckActivity;
 import com.lanou3g.newdemo.activity.NewsLBActivity;
+import com.lanou3g.newdemo.activity.NewsListActivity;
 import com.lanou3g.newdemo.base.BaseFragment;
 import com.lanou3g.newdemo.base.StringUrl;
 import com.lanou3g.newdemo.news.adapter.NewsLBAdapter;
@@ -57,7 +60,7 @@ import java.util.List;
  * <p>
  * Created by 刘城羊 on 16/7/10.
  */
-public class NewsFragment extends BaseFragment implements View.OnClickListener {
+public class NewsFragment extends BaseFragment implements View.OnClickListener, AdapterView.OnItemClickListener {
     private ImageView news_more_img, iv_back;
     private DrawerLayout drawerLayout;
     private NewsLBAdapter newsListAdapter;
@@ -81,7 +84,7 @@ public class NewsFragment extends BaseFragment implements View.OnClickListener {
     private ImageView iv_tv;
     private NewsLBBean newsLBBean;
 
-    private ImageView news_item_image;
+    private ImageView news_item_image, news_check_img;
 
     @Override
     protected int setLayout() {
@@ -111,8 +114,10 @@ public class NewsFragment extends BaseFragment implements View.OnClickListener {
         iv_height = (ImageView) view.findViewById(R.id.iv_height);
         iv_learn = (ImageView) view.findViewById(R.id.iv_learn);
         iv_tv = (ImageView) view.findViewById(R.id.iv_tv);
+        news_check_img = (ImageView) view.findViewById(R.id.news_check_img);
 
 
+        news_check_img.setOnClickListener(this);
         iv_all.setOnClickListener(this);
         iv_early.setOnClickListener(this);
         iv_bturn.setOnClickListener(this);
@@ -121,6 +126,7 @@ public class NewsFragment extends BaseFragment implements View.OnClickListener {
         iv_height.setOnClickListener(this);
         iv_learn.setOnClickListener(this);
         iv_tv.setOnClickListener(this);
+        listView.setOnItemClickListener(this);
 
 
     }
@@ -132,6 +138,13 @@ public class NewsFragment extends BaseFragment implements View.OnClickListener {
         initLunBo();
         initSpeed();
         initList();
+        news_check_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(NewsFragment.this.getActivity(), NewsCheckActivity.class);
+                startActivity(intent);
+            }
+        });
         news_more_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -184,14 +197,24 @@ public class NewsFragment extends BaseFragment implements View.OnClickListener {
                 newsListAdapter.setNewsLBBean(bean);
                 viewPager.setAdapter(newsListAdapter);
                 newsListAdapter.setPager(viewPager);
-                viewPager.setOnClickListener(new View.OnClickListener() {
+
+
+                viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
                     @Override
-                    public void onClick(View view) {
-                    
+                    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+                    }
+
+                    @Override
+                    public void onPageSelected(int position) {
+
+                    }
+
+                    @Override
+                    public void onPageScrollStateChanged(int state) {
+
                     }
                 });
-
-
 
             }
         }, new Response.ErrorListener() {
@@ -255,10 +278,7 @@ public class NewsFragment extends BaseFragment implements View.OnClickListener {
         queue.add(stringRequest);
 
 
-
     }
-
-
 
 
     @Override
@@ -312,10 +332,33 @@ public class NewsFragment extends BaseFragment implements View.OnClickListener {
                 request(StringUrl.stringFragmentNewsLearn);
                 break;
 
-
         }
 
 
     }
 
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        Intent intent = new Intent(NewsFragment.this.getActivity(), NewsListActivity.class);
+        NewsListBean.DataBean.DataBean1 bean = (NewsListBean.DataBean.DataBean1) adapterView.getItemAtPosition(i);
+        String pictureUrl = bean.getFeatureImg();
+        intent.putExtra("pictureUrl", pictureUrl);
+        String name = bean.getUser().getName();
+        intent.putExtra("name", name);
+        String title = bean.getTitle();
+        intent.putExtra("title", title);
+        String feedId = bean.getFeedId();
+        String detailsUrl = "https://rong.36kr.com/api/mobi/news/" + feedId;
+        intent.putExtra("feedId", feedId);
+        intent.putExtra("detailsUrl", detailsUrl);
+        long publishTime = bean.getPublishTime();
+        intent.putExtra("publishTime", publishTime);
+        long Id = bean.getUser().getSsoId();
+        intent.putExtra("Id", Id);
+        String columnName = bean.getColumnName();
+        intent.putExtra("columnName", columnName);
+        startActivity(intent);
+
+
+    }
 }
