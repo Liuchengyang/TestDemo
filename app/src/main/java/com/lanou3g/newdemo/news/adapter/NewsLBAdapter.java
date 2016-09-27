@@ -70,7 +70,7 @@ public class NewsLBAdapter extends PagerAdapter {
     }
 
     @Override
-    public Object instantiateItem(ViewGroup container, int position) {
+    public Object instantiateItem(ViewGroup container, final int position) {
         View view =LayoutInflater.from(context).inflate(R.layout.news_fragment_lunbo_item,container,false);
 
         ImageView imageView = (ImageView) view.findViewById(R.id.news_item_image);
@@ -81,6 +81,14 @@ public class NewsLBAdapter extends PagerAdapter {
 
 
 
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context,NewsLBActivity.class);
+                intent.putExtra("URL",newsLBBean.getData().getPics().get(position %newsLBBean.getData().getPics().size()).getLocation());
+                context.startActivity(intent);
+            }
+        });
 
         return view;
 

@@ -43,4 +43,7 @@ public class StringUrl {
     public static String stringFragmentNewsMoney ="https://rong.36kr.com/api/mobi/news?pageSize=20&columnId=69&pagingAction=up";
     public static String stringFragmentNewsHeight ="https://rong.36kr.com/api/mobi/news?pageSize=20&columnId=70&pagingAction=up";
     public static String stringFragmentNewsLearn ="https://rong.36kr.com/api/mobi/news?pageSize=20&columnId=71&pagingAction=up";
+
+
+    public static String stringFoundInvestActivity ="https://rong.36kr.com/api/mobi/investor?page=1&pageSize=20";
 }

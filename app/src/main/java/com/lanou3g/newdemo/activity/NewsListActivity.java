@@ -8,6 +8,7 @@ import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.text.method.ScrollingMovementMethod;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -71,7 +72,7 @@ public class NewsListActivity extends BaseAty implements View.OnClickListener {
     private SimpleDateFormat dateFormat;
     private Html.ImageGetter imageGetter;
 
-    private ImageView iv_back,iv_comment,iv_share,iv_more;
+    private ImageView iv_back,iv_comment,iv_share,iv_more,iv_down;
 
     @Override
     protected int setLayout() {
@@ -86,12 +87,17 @@ public class NewsListActivity extends BaseAty implements View.OnClickListener {
         tv_context = (TextView) findViewById(R.id.tv_context);
         iv_pic = (ImageView) findViewById(R.id.iv_pic);
 
+
+        iv_down = (ImageView) findViewById(R.id.iv_down);
+
         iv_back = (ImageView) findViewById(R.id.iv_back);
         iv_comment = (ImageView) findViewById(R.id.iv_comment);
         iv_share = (ImageView) findViewById(R.id.iv_share);
         iv_more = (ImageView) findViewById(R.id.iv_more);
         iv_back.setOnClickListener(this);
         iv_more.setOnClickListener(this);
+        iv_down.setOnClickListener(this);
+        iv_share.setOnClickListener(this);
 
 
 
@@ -130,6 +136,7 @@ public class NewsListActivity extends BaseAty implements View.OnClickListener {
                 String details = response.getData().getContent();
                 tv_context.setMovementMethod(ScrollingMovementMethod.getInstance());// 设置可滚动
                 tv_context.setMovementMethod(LinkMovementMethod.getInstance());//设置超链接可以打开网页
+                Log.d("123", details);
                 tv_context.setText(Html.fromHtml(details, imageGetter, null));
 
 
@@ -201,6 +208,14 @@ public class NewsListActivity extends BaseAty implements View.OnClickListener {
             case R.id.iv_more:
                 Intent intent =new Intent(NewsListActivity.this,MoreActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.iv_down:
+                Intent intentDown =new Intent(NewsListActivity.this,DownActivity.class);
+                startActivity(intentDown);
+                break;
+            case R.id.iv_share:
+                Intent intentShare =new Intent(NewsListActivity.this,ShareActivity.class);
+                startActivity(intentShare);
 
         }
 

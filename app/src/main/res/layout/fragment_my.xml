@@ -5,6 +5,7 @@
     android:orientation="vertical">
 
     <RelativeLayout
+        android:id="@+id/my_relative_layout"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:background="#1b4ecc">

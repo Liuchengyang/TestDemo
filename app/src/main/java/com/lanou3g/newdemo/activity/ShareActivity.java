@@ -1,11 +1,13 @@
 package com.lanou3g.newdemo.activity;
 
-import android.content.Intent;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
+import android.app.Activity;
+import android.os.Bundle;
+import android.support.v4.view.ViewPager;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.lanou3g.newdemo.R;
-import com.lanou3g.newdemo.base.BaseAty;
 
 /**
  * 　　　　　　　　┏┓　　　┏┓+ +
@@ -32,33 +34,27 @@ import com.lanou3g.newdemo.base.BaseAty;
  * <p>
  * Created by 刘城羊 on 16/7/10.
  */
-public class NewsLBActivity extends BaseAty {
-    private WebView webView;
+public class ShareActivity extends Activity {
 
     @Override
-    protected int setLayout() {
-        return R.layout.activity_news_lb_pic;
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_share);
+        getWindow().setLayout(ViewPager.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+
+
+        findViewById(R.id.share_btn_cancel).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
     }
 
     @Override
-    protected void initView() {
-        webView = (WebView) findViewById(R.id.news_web_view);
-
-    }
-
-    @Override
-    protected void initData() {
-        Intent intent = getIntent();
-        String url = intent.getStringExtra("URL");
-        webView.getSettings().setJavaScriptEnabled(true);
-        webView.loadUrl(url);
-        WebViewClient webViewClient =new WebViewClient();
-        webView.setWebViewClient(webViewClient);
-        webView.getSettings().setUseWideViewPort(true);
-        webView.getSettings().setLoadWithOverviewMode(true);
-        webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
-        webView.getSettings().setBuiltInZoomControls(true);
-
-
+    public boolean onTouchEvent(MotionEvent event) {
+        finish();
+        return true;
     }
 }

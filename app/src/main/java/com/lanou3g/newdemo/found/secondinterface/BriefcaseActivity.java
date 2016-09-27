@@ -1,8 +1,4 @@
-package com.lanou3g.newdemo.activity;
-
-import android.content.Intent;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
+package com.lanou3g.newdemo.found.secondinterface;
 
 import com.lanou3g.newdemo.R;
 import com.lanou3g.newdemo.base.BaseAty;
@@ -32,33 +28,19 @@ import com.lanou3g.newdemo.base.BaseAty;
  * <p>
  * Created by 刘城羊 on 16/7/10.
  */
-public class NewsLBActivity extends BaseAty {
-    private WebView webView;
-
+public class BriefcaseActivity extends BaseAty {
     @Override
     protected int setLayout() {
-        return R.layout.activity_news_lb_pic;
+        return R.layout.activity_briefcase;
     }
 
     @Override
     protected void initView() {
-        webView = (WebView) findViewById(R.id.news_web_view);
 
     }
 
     @Override
     protected void initData() {
-        Intent intent = getIntent();
-        String url = intent.getStringExtra("URL");
-        webView.getSettings().setJavaScriptEnabled(true);
-        webView.loadUrl(url);
-        WebViewClient webViewClient =new WebViewClient();
-        webView.setWebViewClient(webViewClient);
-        webView.getSettings().setUseWideViewPort(true);
-        webView.getSettings().setLoadWithOverviewMode(true);
-        webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
-        webView.getSettings().setBuiltInZoomControls(true);
-
 
     }
 }

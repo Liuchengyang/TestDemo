@@ -324,6 +324,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/found_investment_person_linear"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -355,6 +356,7 @@
                 android:background="@android:color/darker_gray" />
 
             <RelativeLayout
+                android:id="@+id/found_person_head_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="7dp">
@@ -393,6 +395,7 @@
 
 
             <RelativeLayout
+                android:id="@+id/found_briefcase_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="7dp">

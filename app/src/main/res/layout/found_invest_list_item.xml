@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp">
+    <ImageView
+        android:id="@+id/found_list_person_img"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        android:scaleType="fitXY"
+        android:src="@mipmap/ic_launcher"/>
+    <TextView
+        android:id="@+id/found_list_name_text"
+        android:layout_toRightOf="@+id/found_list_person_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:textSize="12sp"
+        android:text="吕伟"/>
+    <TextView
+        android:id="@+id/found_list_focus_text"
+        android:layout_marginTop="3dp"
+        android:layout_toRightOf="@+id/found_list_person_img"
+        android:layout_below="@+id/found_list_name_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:textSize="10sp"
+        android:text="关注领域:"/>
+
+    <TextView
+        android:id="@+id/found_list_focus_content"
+        android:layout_below="@+id/found_list_name_text"
+        android:layout_toRightOf="@+id/found_list_focus_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:layout_marginLeft="5dp"
+        android:textSize="10sp"
+        android:text="O2O  医疗健康  消费生活"/>
+    <TextView
+        android:id="@+id/found_list_nvestment_text"
+        android:layout_marginTop="3dp"
+        android:layout_toRightOf="@+id/found_list_person_img"
+        android:layout_below="@+id/found_list_focus_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:textSize="10sp"
+        android:text="投资阶段:" />
+    <TextView
+        android:id="@+id/found_list_nvestment_content"
+        android:layout_below="@+id/found_list_focus_content"
+        android:layout_toRightOf="@+id/found_list_focus_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:layout_marginLeft="5dp"
+        android:textColor="#e1886f"
+        android:textSize="10sp"
+        android:text="O2O  医疗健康  消费生活"/>
+
+
+
+</RelativeLayout>

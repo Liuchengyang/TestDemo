@@ -26,6 +26,10 @@
         <activity android:name=".activity.MoreActivity" android:theme="@style/MyDialogStyleBottom"/>
         <activity android:name=".activity.MyPhoneActivity" android:theme="@style/MyDialogStyleBottom"/>
         <activity android:name=".activity.MySetActivity"/>
+        <activity android:name=".activity.DownActivity"/>
+        <activity android:name=".activity.ShareActivity" android:theme="@style/MyDialogStyleBottom"/>
+
+        <activity android:name=".found.secondinterface.FoundInvestActivity"/>
     </application>
 
 </manifest>
