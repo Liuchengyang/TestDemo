@@ -65,6 +65,7 @@ public class NewsFragment extends BaseFragment implements View.OnClickListener, 
     private DrawerLayout drawerLayout;
     private NewsLBAdapter newsListAdapter;
 
+
     public static List<String> strUrl = new ArrayList<>();
     private ListView listView;
     private NewsListAdapter newsAdapter;
@@ -198,23 +199,7 @@ public class NewsFragment extends BaseFragment implements View.OnClickListener, 
                 viewPager.setAdapter(newsListAdapter);
                 newsListAdapter.setPager(viewPager);
 
-
-                viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-                    @Override
-                    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-                    }
-
-                    @Override
-                    public void onPageSelected(int position) {
-
-                    }
-
-                    @Override
-                    public void onPageScrollStateChanged(int state) {
-
-                    }
-                });
+                
 
             }
         }, new Response.ErrorListener() {

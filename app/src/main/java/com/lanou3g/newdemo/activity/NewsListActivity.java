@@ -210,6 +210,7 @@ public class NewsListActivity extends BaseAty implements View.OnClickListener {
                 startActivity(intent);
                 break;
             case R.id.iv_down:
+
                 Intent intentDown =new Intent(NewsListActivity.this,DownActivity.class);
                 startActivity(intentDown);
                 break;

@@ -1,8 +1,6 @@
 package com.lanou3g.newdemo.news.adapter;
 
 import android.content.Context;
-import android.content.res.ObbInfo;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.lanou3g.newdemo.R;
-import com.lanou3g.newdemo.news.bean.NewsListBean;
+import com.lanou3g.newdemo.news.bean.NewsCheckBean;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
@@ -42,66 +40,62 @@ import java.util.Date;
  * <p>
  * Created by 刘城羊 on 16/7/10.
  */
-public class NewsListAdapter extends BaseAdapter {
-    private NewsListBean newsListBean;
+public class NewsCheckAdapter extends BaseAdapter {
     private Context context;
-    Date date = new Date(System.currentTimeMillis());
-    SimpleDateFormat format =new SimpleDateFormat(" HH:mm:ss");
+    private NewsCheckBean bean;
+    private SimpleDateFormat dateFormat =new SimpleDateFormat(" MM dd ");
+    private Date date;
 
-
-    public NewsListAdapter(Context context) {
+    public NewsCheckAdapter(Context context) {
         this.context = context;
     }
 
-    public void setNewsListBean(NewsListBean newsListBean) {
-        this.newsListBean = newsListBean;
+    public void setBean(NewsCheckBean bean) {
+        this.bean = bean;
     }
 
     @Override
     public int getCount() {
-        return newsListBean.getData().getData().size();
+        return bean.getData().getData().size();
     }
 
     @Override
     public Object getItem(int i) {
-        return newsListBean.getData().getData().get(i);
+        return bean.getData().getData().get(i);
     }
 
     @Override
     public long getItemId(int i) {
-        return i;
+        return 0;
     }
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        ViewHolder holder =null;
+        CheckViewHolder holder =null;
         if (view==null) {
-            view = LayoutInflater.from(context).inflate(R.layout.fragment_news_list_item,viewGroup,false);
-            holder = new ViewHolder(view);
+            view = LayoutInflater.from(context).inflate(R.layout.news_check_list_item,viewGroup,false);
+            holder =new CheckViewHolder(view);
             view.setTag(holder);
-
         }else {
-            holder = (ViewHolder) view.getTag();
+            holder = (CheckViewHolder) view.getTag();
         }
-        Picasso.with(context).load(newsListBean.getData().getData().get(i).getFeatureImg()).into(holder.news_list_item_img);
-
-        holder.news_list_item_title.setText(newsListBean.getData().getData().get(i).getTitle());
-
-        holder.news_list_item_name.setText(newsListBean.getData().getData().get(i).getUser().getName());
-        holder.news_list_item_time.setText(format.format(date));
-        holder.news_list_item_comname.setText(newsListBean.getData().getData().get(i).getColumnName());
+        Picasso.with(context).load(bean.getData().getData().get(i).getFeatureImg()).into(holder.item_check_img);
+        holder.item_check_title.setText(bean.getData().getData().get(i).getTitle());
+        holder.item_check_name.setText(bean.getData().getData().get(i).getUser().getName());
+        date =new Date(bean.getData().getData().get(i).getPublishTime());
+        String stringDate =dateFormat.format(date);
+        holder.item_check_time.setText(stringDate);
         return view;
     }
 
-    class ViewHolder{
-        private ImageView news_list_item_img;
-        private TextView news_list_item_title,news_list_item_name,news_list_item_time,news_list_item_comname;
-        public ViewHolder(View view){
-            news_list_item_img = (ImageView) view.findViewById(R.id.news_list_item_img);
-            news_list_item_title = (TextView) view.findViewById(R.id.news_list_item_title);
-            news_list_item_name = (TextView) view.findViewById(R.id.news_list_item_name);
-            news_list_item_time = (TextView) view.findViewById(R.id.news_list_item_time);
-            news_list_item_comname = (TextView) view.findViewById(R.id.news_list_item_comname);
+    class CheckViewHolder{
+        private ImageView item_check_img ;
+        private TextView item_check_title,item_check_name,item_check_time;
+        public CheckViewHolder(View view){
+            item_check_img = (ImageView) view.findViewById(R.id.item_check_img);
+            item_check_title = (TextView) view.findViewById(R.id.item_check_title);
+            item_check_name = (TextView) view.findViewById(R.id.item_check_name);
+            item_check_time = (TextView) view.findViewById(R.id.item_check_time);
 
         }
     }
