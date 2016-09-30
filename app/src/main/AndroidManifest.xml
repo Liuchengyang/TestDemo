@@ -26,12 +26,15 @@
         <activity android:name=".activity.MoreActivity" android:theme="@style/MyDialogStyleBottom"/>
         <activity android:name=".activity.MyPhoneActivity" android:theme="@style/MyDialogStyleBottom"/>
         <activity android:name=".activity.MySetActivity"/>
-        <activity android:name=".activity.DownActivity"/>
+
         <activity android:name=".activity.ShareActivity" android:theme="@style/MyDialogStyleBottom"/>
 
         <activity android:name=".found.secondinterface.FoundInvestActivity"/>
         <activity android:name=".found.secondinterface.PersonHeadActivity"/>
         <activity android:name=".found.secondinterface.BriefcaseActivity"/>
+        <activity android:name=".found.secondinterface.FoundImgActivity"/>
+
+        <activity android:name=".found.secondinterface.LinkActivity"/>
     </application>
 
 </manifest>

@@ -1,16 +1,34 @@
 package com.lanou3g.newdemo.activity;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.support.v7.widget.MenuPopupWindow;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.text.method.ScrollingMovementMethod;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Display;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
@@ -21,6 +39,8 @@ import com.lanou3g.newdemo.MyImageListener;
 import com.lanou3g.newdemo.R;
 import com.lanou3g.newdemo.UrlDrawable;
 import com.lanou3g.newdemo.base.BaseAty;
+import com.lanou3g.newdemo.news.adapter.DownAdapter;
+import com.lanou3g.newdemo.news.bean.DownBean;
 import com.lanou3g.newdemo.news.bean.NewsInterfaceBean;
 import com.lanou3g.newdemo.MemoryCache;
 import com.lanou3g.newdemo.volley.VolleySingleton;
@@ -64,15 +84,20 @@ public class NewsListActivity extends BaseAty implements View.OnClickListener {
     private String columnName;
     private String detailsUrl;
     private long publishTime;
+    private RelativeLayout news_list_relative_layout;
 
     private TextView tv_time;
-    private TextView tv_author, tv_title, tv_context;
+    private TextView tv_author, tv_title, tv_context, iv_brief;
     private ImageView iv_pic;
     private Date date;
     private SimpleDateFormat dateFormat;
     private Html.ImageGetter imageGetter;
 
-    private ImageView iv_back,iv_comment,iv_share,iv_more,iv_down;
+    private ImageView iv_back, iv_comment, iv_share, iv_more;
+    private ImageView iv_down;
+
+    private PopupWindow mPopupWindow;
+    private String downUrl;
 
     @Override
     protected int setLayout() {
@@ -81,11 +106,13 @@ public class NewsListActivity extends BaseAty implements View.OnClickListener {
 
     @Override
     protected void initView() {
+        news_list_relative_layout = (RelativeLayout) findViewById(R.id.news_list_relative_layout);
         tv_time = (TextView) findViewById(R.id.tv_time);
         tv_author = (TextView) findViewById(R.id.tv_author);
         tv_title = (TextView) findViewById(R.id.tv_title);
         tv_context = (TextView) findViewById(R.id.tv_context);
         iv_pic = (ImageView) findViewById(R.id.iv_pic);
+        iv_brief = (TextView) findViewById(R.id.iv_brief);
 
 
         iv_down = (ImageView) findViewById(R.id.iv_down);
@@ -98,7 +125,7 @@ public class NewsListActivity extends BaseAty implements View.OnClickListener {
         iv_more.setOnClickListener(this);
         iv_down.setOnClickListener(this);
         iv_share.setOnClickListener(this);
-
+        news_list_relative_layout.setOnClickListener(this);
 
 
     }
@@ -119,13 +146,16 @@ public class NewsListActivity extends BaseAty implements View.OnClickListener {
         detailsUrl = intent.getStringExtra("detailsUrl");
 
 
+        downUrl = intent.getStringExtra("downUrl");
+
+
         publishTime = intent.getLongExtra("publishTime", 0);
         date = new Date(publishTime);
         dateFormat = new SimpleDateFormat("mm:ss");
         String time = dateFormat.format(date);
         RequestQueue requestQueue = VolleySingleton.getVolleySingleton().getRequestQueue();
         final ImageLoader imageLoader = new ImageLoader(requestQueue, new MemoryCache());
-        imageLoader.get(pictureUrl,new MyImageListener(iv_pic));
+        imageLoader.get(pictureUrl, new MyImageListener(iv_pic));
         tv_author.setText(name);
         tv_title.setText(title);
         tv_time.setText(time);
@@ -147,7 +177,6 @@ public class NewsListActivity extends BaseAty implements View.OnClickListener {
 
             }
         });
-
 
 
         imageGetter = new Html.ImageGetter() {
@@ -206,22 +235,131 @@ public class NewsListActivity extends BaseAty implements View.OnClickListener {
                 finish();
                 break;
             case R.id.iv_more:
-                Intent intent =new Intent(NewsListActivity.this,MoreActivity.class);
+                Intent intent = new Intent(NewsListActivity.this, MoreActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.iv_down:
 
-                Intent intentDown =new Intent(NewsListActivity.this,DownActivity.class);
-                startActivity(intentDown);
+            case R.id.news_list_relative_layout:
+                iv_down.setBackgroundResource(R.mipmap.iv_down1);
+                showPopupWindow(iv_down);
                 break;
             case R.id.iv_share:
-                Intent intentShare =new Intent(NewsListActivity.this,ShareActivity.class);
+                Intent intentShare = new Intent(NewsListActivity.this, ShareActivity.class);
                 startActivity(intentShare);
 
         }
 
 
     }
+
+
+    private void showPopupWindow(View v) {
+        //设置contentView
+        View contentView = LayoutInflater.from(this).inflate(R.layout.activity_down, null);
+
+
+        final TextView down_article = (TextView) contentView.findViewById(R.id.down_article);
+        final TextView down_browse = (TextView) contentView.findViewById(R.id.down_browse);
+        final ListView listViewDown = (ListView) contentView.findViewById(R.id.iv_down_list_view);
+
+
+
+
+        final DownAdapter downAdapter = new DownAdapter(this);
+        VolleySingleton.addRequest(downUrl, DownBean.class, new Response.Listener<DownBean>() {
+
+            @Override
+            public void onResponse(DownBean response) {
+                String brief = response.getData().getBrief();
+                iv_brief.setText(brief);
+                int count =response.getData().getTotalCount();
+                down_article.setText(count +"篇");
+                int totalView =response.getData().getTotalView()  ;
+                Log.d("111", "totalView:" + totalView);
+                down_browse.setText(totalView/10000 + "万");
+                downAdapter.setBean(response);
+                listViewDown.setAdapter(downAdapter);
+                listViewDown.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                    }
+                });
+
+
+
+
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+
+
+        mPopupWindow = new PopupWindow(contentView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
+
+//        WindowManager windowManager = this.getWindowManager();
+//        Display display = windowManager.getDefaultDisplay();
+//        mPopupWindow = new PopupWindow(contentView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
+        // 设置动画效果
+//        popupWindow.setAnimationStyle(R.style.Animation_ZoomLight);
+
+        //点击其他地方消失
+        mPopupWindow.showAsDropDown(v);
+        ColorDrawable dw = new ColorDrawable(0x00000000);
+        //设置SelectPicPopupWindow弹出窗体的背景
+       mPopupWindow.setBackgroundDrawable(dw);
+        backgroundAlpha(NewsListActivity.this,0.5f);//0.0-1.0
+        mPopupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+
+            @Override
+            public void onDismiss() {
+                // TODO Auto-generated method stub
+                backgroundAlpha(NewsListActivity.this, 1f);
+            }
+        });
+
+
+        contentView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                closePopupWindow();
+                iv_down.setBackgroundResource(R.mipmap.icon_down);
+                return false;
+            }
+        });
+
+
+    }
+
+    /**
+     * 设置添加屏幕的背景透明度
+     * @param bgAlpha
+     */
+    public void backgroundAlpha(Activity context, float bgAlpha)
+    {
+        WindowManager.LayoutParams lp = context.getWindow().getAttributes();
+        lp.alpha = bgAlpha;
+        context.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+        context.getWindow().setAttributes(lp);
+    }
+
+    private void closePopupWindow() {
+        if (mPopupWindow != null && mPopupWindow.isShowing()) {
+            mPopupWindow.dismiss();
+            mPopupWindow = null;
+            WindowManager.LayoutParams params = this.getWindow().getAttributes();
+            params.alpha = 1f;
+            this.getWindow().setAttributes(params);
+        }
+
+    }
+
 
     abstract class MyRunnable implements Runnable {
         protected Bitmap bitmap;
@@ -230,4 +368,6 @@ public class NewsListActivity extends BaseAty implements View.OnClickListener {
             this.bitmap = bitmap;
         }
     }
+
+
 }

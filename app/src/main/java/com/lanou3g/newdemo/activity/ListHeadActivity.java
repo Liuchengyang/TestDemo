@@ -1,9 +1,7 @@
 package com.lanou3g.newdemo.activity;
 
-import android.app.Activity;
-import android.os.Bundle;
-
 import com.lanou3g.newdemo.R;
+import com.lanou3g.newdemo.base.BaseAty;
 
 /**
  * 　　　　　　　　┏┓　　　┏┓+ +
@@ -27,13 +25,22 @@ import com.lanou3g.newdemo.R;
  * 　　　　　　　　　┗┓┓┏━┳┓┏┛ + + + +
  * 　　　　　　　　　　┃┫┫　┃┫┫
  * 　　　　　　　　　　┗┻┛　┗┻┛+ + + +
- * <p>
+ * <p/>
  * Created by 刘城羊 on 16/7/10.
  */
-public class DownActivity  extends Activity{
+public class ListHeadActivity  extends BaseAty{
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_down);
+    protected int setLayout() {
+        return R.layout.activity_list_head;
+    }
+
+    @Override
+    protected void initView() {
+
+    }
+
+    @Override
+    protected void initData() {
+
     }
 }

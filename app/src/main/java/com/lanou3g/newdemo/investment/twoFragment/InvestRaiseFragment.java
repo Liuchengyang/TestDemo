@@ -103,19 +103,19 @@ public class InvestRaiseFragment extends BaseFragment {
                 Gson gson = new Gson();
                 InvestRaiseBean bean = gson.fromJson(response, InvestRaiseBean.class);
 
-//                Picasso.with(getContext()).load(bean.getData().getData().get(0).getCompany_logo()).into(imageViewlogal);
-//                textViewcompanyname.setText(bean.getData().getData().get(0).getCompany_name());
-//                textViewsingmeting.setText(bean.getData().getData().get(0).getCompany_brief());
-//                Picasso.with(getContext()).load(bean.getData().getData().get(0).getFile_list_img()).into(imageViewbigpic);
-//                textViewsecondcreat.setText(bean.getData().getData().get(0).getCf_advantage().get(0).getAdname());
-//                textViewthirdteamnumber.setText(bean.getData().getData().get(0).getCf_advantage().get(1).getAdname());
-//                textViewleadname.setText(bean.getData().getData().get(0).getLead_name());
-//                textViewadcontent.setText(bean.getData().getData().get(0).getCf_advantage().get(0).getAdcontent());
-//                textViewthird.setText(bean.getData().getData().get(0).getCf_advantage().get(1).getAdcontent());
-//                textViewing.setText(bean.getData().getData().get(0).getFundStatus().getDesc());
-//
-//                textViewmoney.setText("已募资" + (int) (bean.getData().getData().get(0).getRate() * 100) + "%");
-//                progressBar.setProgress((int) (bean.getData().getData().get(0).getRate() * 100));
+                Picasso.with(getContext()).load(bean.getData().getData().get(0).getCompany_logo()).into(imageViewlogal);
+                textViewcompanyname.setText(bean.getData().getData().get(0).getCompany_name());
+                textViewsingmeting.setText(bean.getData().getData().get(0).getCompany_brief());
+                Picasso.with(getContext()).load(bean.getData().getData().get(0).getFile_list_img()).into(imageViewbigpic);
+                textViewsecondcreat.setText(bean.getData().getData().get(0).getCf_advantage().get(0).getAdname());
+                textViewthirdteamnumber.setText(bean.getData().getData().get(0).getCf_advantage().get(1).getAdname());
+                textViewleadname.setText(bean.getData().getData().get(0).getLead_name());
+                textViewadcontent.setText(bean.getData().getData().get(0).getCf_advantage().get(0).getAdcontent());
+                textViewthird.setText(bean.getData().getData().get(0).getCf_advantage().get(1).getAdcontent());
+                textViewing.setText(bean.getData().getData().get(0).getFundStatus().getDesc());
+
+                textViewmoney.setText(bean.getData().getData().get(0).getFundStatus().getDesc());
+                progressBar.setProgress((int) (bean.getData().getData().get(0).getRate() * 100));
 
 
             }

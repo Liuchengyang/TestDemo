@@ -342,6 +342,9 @@ public class NewsFragment extends BaseFragment implements View.OnClickListener, 
         intent.putExtra("Id", Id);
         String columnName = bean.getColumnName();
         intent.putExtra("columnName", columnName);
+        String downUrl ="https://rong.36kr.com/api/mobi/news/"+feedId+"/author-region";
+        intent.putExtra("downUrl",downUrl);
+
         startActivity(intent);
 
 

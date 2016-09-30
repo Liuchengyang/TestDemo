@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        >
+
+        <ImageView
+            android:id="@+id/iv_turnpic_details_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="8dp"
+            android:src="@mipmap/back1"
+            />
+
+        <ImageView
+            android:id="@+id/iv_pop"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_margin="8dp"
+            android:src="@mipmap/news_toolbar_icon_more"
+            />
+
+    </RelativeLayout>
+
+
+    <WebView
+        android:id="@+id/web_turn_pic_details"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/linear_layout"
+        />
+
+</LinearLayout>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:padding="10dp"
+    android:layout_margin="10dp"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/item_big_img_found"
+        android:layout_width="350dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:scaleType="fitXY"
+        android:background="@mipmap/ic_launcher"/>
+    <TextView
+        android:id="@+id/item_title_found"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:lines="1"
+        android:layout_marginTop="5dp"
+        android:textColor="@android:color/black"
+        android:text="中关村"/>
+    <TextView
+        android:id="@+id/item_content_found"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:textSize="10sp"
+        android:lines="1"
+        android:text="带着你飞"/>
+   <LinearLayout
+       android:layout_marginTop="5dp"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal">
+       <TextView
+           android:id="@+id/item_sign_found"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textSize="10sp"
+           android:background="#0375c1"
+           android:text="报名中"/>
+
+       <ImageView
+           android:id="@+id/item_position_found"
+           android:layout_width="13dp"
+           android:layout_height="13dp"
+           android:layout_marginLeft="20dp"
+           android:src="@mipmap/position" />
+       <TextView
+           android:id="@+id/item_city_found"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginLeft="10dp"
+           android:textSize="10sp"
+           android:text="背景"/>
+       <TextView
+           android:id="@+id/item_time_found"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:gravity="right"
+           android:textSize="10sp"
+           android:text="时间"/>
+   </LinearLayout>
+
+
+
+
+</LinearLayout>

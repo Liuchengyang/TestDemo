@@ -3,6 +3,7 @@ package com.lanou3g.newdemo.found;
 import android.content.Intent;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
@@ -14,6 +15,7 @@ import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.lanou3g.newdemo.R;
 import com.lanou3g.newdemo.found.secondinterface.BriefcaseActivity;
+import com.lanou3g.newdemo.found.secondinterface.FoundImgActivity;
 import com.lanou3g.newdemo.found.secondinterface.FoundInvestActivity;
 import com.lanou3g.newdemo.base.BaseFragment;
 import com.lanou3g.newdemo.base.StringUrl;
@@ -51,6 +53,7 @@ public class FoundFragment extends BaseFragment implements View.OnClickListener 
     private FoundLBAdapter foundLBAdapter;
     private LinearLayout found_investment_person_linear;
     private RelativeLayout found_person_head_layout,found_briefcase_layout;
+    private ImageView found_activity_img;
     @Override
     protected int setLayout() {
         return R.layout.fragment_found;
@@ -63,6 +66,8 @@ public class FoundFragment extends BaseFragment implements View.OnClickListener 
         found_person_head_layout = (RelativeLayout) view.findViewById(R.id.found_person_head_layout);
         found_briefcase_layout = (RelativeLayout) view.findViewById(R.id.found_briefcase_layout);
 
+        found_activity_img = (ImageView) view.findViewById(R.id.found_activity_img);
+
 
     }
 
@@ -71,6 +76,7 @@ public class FoundFragment extends BaseFragment implements View.OnClickListener 
         found_investment_person_linear.setOnClickListener(this);
         found_person_head_layout.setOnClickListener(this);
         found_briefcase_layout.setOnClickListener(this);
+        found_activity_img.setOnClickListener(this);
 
                 foundLBAdapter =new FoundLBAdapter(getContext());
         RequestQueue queue = Volley.newRequestQueue(getActivity());
@@ -100,18 +106,22 @@ public class FoundFragment extends BaseFragment implements View.OnClickListener 
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.found_investment_person_linear:
-                Intent intent =new Intent(getActivity(),FoundInvestActivity.class);
-                startActivity(intent);
+                Intent intentInvestPerson =new Intent(getActivity(),FoundInvestActivity.class);
+                startActivity(intentInvestPerson);
                 break;
             case R.id. found_person_head_layout:
-                Intent intent1  =new Intent(getActivity(),PersonHeadActivity.class);
-                startActivity(intent1);
+                Intent intentPersonHead  =new Intent(getActivity(),PersonHeadActivity.class);
+                startActivity(intentPersonHead);
                 break;
             case R.id. found_briefcase_layout:
-                Intent intent2 =new Intent(getActivity(),BriefcaseActivity.class);
-                startActivity(intent2);
+                Intent intentBriefcase =new Intent(getActivity(),BriefcaseActivity.class);
+                startActivity(intentBriefcase);
                 break;
 
+            case R.id.found_activity_img:
+                Intent intentFoundActy =new Intent(getActivity(),FoundImgActivity.class);
+                startActivity(intentFoundActy);
+                break;
         }
 
     }

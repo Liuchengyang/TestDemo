@@ -87,7 +87,7 @@ public class InvestAllAdapter extends BaseAdapter {
         viewHolder.textViewadcontent.setText(investAllBean.getData().getData().get(i).getCf_advantage().get(0).getAdcontent());
         viewHolder.textViewthird.setText(investAllBean.getData().getData().get(i).getCf_advantage().get(1).getAdcontent());
         viewHolder. textViewing.setText(investAllBean.getData().getData().get(i).getFundStatus().getDesc());
-        viewHolder.textViewmoney.setText("已募资" + (int) (investAllBean.getData().getData().get(i).getRate() * 100) + "%");
+//        viewHolder.textViewmoney.setText("已募资" + (int) (investAllBean.getData().getData().get(i).getRate() * 100) + "%");
 
         viewHolder.progressBar.setProgress((int)(investAllBean.getData().getData().get(i).getRate() * 100));
 

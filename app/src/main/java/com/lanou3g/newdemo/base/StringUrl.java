@@ -46,4 +46,15 @@ public class StringUrl {
 
 
     public static String stringFoundInvestActivity ="https://rong.36kr.com/api/mobi/investor?page=1&pageSize=20";
+
+    public  static String stringFoundFutureActivity ="https://rong.36kr.com/api/mobi/activity/list?page=1";
+    public  static String stringFoundFutureDemo ="https://rong.36kr.com/api/mobi/activity/list?page=1&categoryId=1&pageSize=20";
+    public  static String stringFoundFutureSpace ="https://rong.36kr.com/api/mobi/activity/list?page=1&categoryId=4&pageSize=20";
+    public  static String stringFoundFutureEquity ="https://rong.36kr.com/api/mobi/activity/list?page=1&categoryId=5&pageSize=20";
+    public  static String stringFoundFutureService ="https://rong.36kr.com/api/mobi/activity/list?page=1&categoryId=6&pageSize=20";
+    public  static String stringFoundFutureRapid ="https://rong.36kr.com/api/mobi/activity/list?page=1&categoryId=7&pageSize=20";
+
+
+
+
 }

@@ -19,9 +19,15 @@
             android:layout_weight="1"
             android:textSize="12sp"
             android:layout_height="wrap_content"
-
             android:background="@null"
+
             android:hint="搜索新闻/用户/公司"/>
+        <ImageButton
+            android:id="@+id/news_check_close_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            android:background="@mipmap/close"/>
         <TextView
             android:id="@+id/news_check_cancel"
             android:layout_width="wrap_content"
@@ -34,27 +40,13 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="#dd868383"/>
-    <TextView
-        android:paddingLeft="5dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="12sp"
-        android:text="历史搜索"/>
 
-    <TextView
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
+    <ListView
+        android:id="@+id/news_check_list_view1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="12sp"
-        android:textColor="#23477e"
-        android:gravity="center_horizontal"
-        android:text="清除历史记录"/>
-
+        android:layout_height="wrap_content"/>
    <ListView
-       android:id="@+id/news_check_list_view"
+       android:id="@+id/news_check_list_view2"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"/>
 
