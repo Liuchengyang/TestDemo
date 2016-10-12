@@ -12,13 +12,15 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".activity.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".news.VideoActivity"/>
+        <activity android:name=".MainActivity"/>
         <activity android:name=".activity.MessActivity"/>
         <activity android:name=".activity.NewsLBActivity"/>
         <activity android:name=".activity.NewsCheckActivity"/>
@@ -35,6 +37,12 @@
         <activity android:name=".found.secondinterface.FoundImgActivity"/>
 
         <activity android:name=".found.secondinterface.LinkActivity"/>
+        <activity android:name=".message.secondinterface.DirectMesActivity"/>
+        <activity android:name=".message.secondinterface.FocusMesActivity"/>
+        <activity android:name=".message.secondinterface.CommentActivity"/>
+        <activity android:name=".message.secondinterface.PraiseActivity"/>
+        <activity android:name=".message.secondinterface.OtherActivity"/>
+        <activity android:name=".activity.OrderActivity"/>
     </application>
 
 </manifest>

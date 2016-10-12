@@ -1,18 +1,10 @@
-package com.lanou3g.newdemo.investment;
+package com.lanou3g.newdemo.message.secondinterface;
 
-import android.content.Intent;
-import android.graphics.Color;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.lanou3g.newdemo.R;
-import com.lanou3g.newdemo.activity.NewsCheckActivity;
-import com.lanou3g.newdemo.base.BaseFragment;
-import com.lanou3g.newdemo.investment.adapter.InvestAdapter;
-import com.lanou3g.newdemo.news.NewsFragment;
+import com.lanou3g.newdemo.base.BaseAty;
 
 /**
  * 　　　　　　　　┏┓　　　┏┓+ +
@@ -39,45 +31,31 @@ import com.lanou3g.newdemo.news.NewsFragment;
  * <p>
  * Created by 刘城羊 on 16/7/10.
  */
-public class InvestFragment extends BaseFragment {
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
-    private InvestAdapter investAdapter;
-    private ImageView invest_check_img;
-
+public class PraiseActivity  extends BaseAty implements View.OnClickListener {
+    private ImageView activity_praise_back;
     @Override
     protected int setLayout() {
-        return R.layout.fragment_invest;
+        return R.layout.activity_praise;
     }
 
     @Override
-    protected void initView(View view) {
-        viewPager = (ViewPager) view.findViewById(R.id.invest_view_pager);
-        tabLayout = (TabLayout) view.findViewById(R.id.invest_tab);
-        invest_check_img = (ImageView) view.findViewById(R.id.invest_check_img);
-
-
+    protected void initView() {
+        activity_praise_back = (ImageView) findViewById(R.id.activity_praise_back);
 
     }
-
-
 
     @Override
     protected void initData() {
-        invest_check_img.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), NewsCheckActivity.class);
-                startActivity(intent);
+        activity_praise_back.setOnClickListener(this);
 
-            }
-        });
+    }
 
-        investAdapter = new InvestAdapter(getChildFragmentManager());
-
-        viewPager.setAdapter(investAdapter);
-        tabLayout.setupWithViewPager(viewPager);
-        tabLayout.setTabTextColors(Color.BLUE,Color.GREEN);
-
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.activity_praise_back:
+                finish();
+                break;
+        }
     }
 }

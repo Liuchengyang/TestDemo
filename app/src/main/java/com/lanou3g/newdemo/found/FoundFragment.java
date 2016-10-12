@@ -14,6 +14,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.lanou3g.newdemo.R;
+import com.lanou3g.newdemo.activity.NewsCheckActivity;
 import com.lanou3g.newdemo.found.secondinterface.BriefcaseActivity;
 import com.lanou3g.newdemo.found.secondinterface.FoundImgActivity;
 import com.lanou3g.newdemo.found.secondinterface.FoundInvestActivity;
@@ -54,6 +55,7 @@ public class FoundFragment extends BaseFragment implements View.OnClickListener 
     private LinearLayout found_investment_person_linear;
     private RelativeLayout found_person_head_layout,found_briefcase_layout;
     private ImageView found_activity_img;
+    private ImageView found_cha_img;
     @Override
     protected int setLayout() {
         return R.layout.fragment_found;
@@ -67,12 +69,26 @@ public class FoundFragment extends BaseFragment implements View.OnClickListener 
         found_briefcase_layout = (RelativeLayout) view.findViewById(R.id.found_briefcase_layout);
 
         found_activity_img = (ImageView) view.findViewById(R.id.found_activity_img);
+        found_cha_img = (ImageView) view.findViewById(R.id.found_cha_img);
 
 
     }
 
     @Override
     protected void initData() {
+
+
+        found_cha_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(getActivity(), NewsCheckActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+
         found_investment_person_linear.setOnClickListener(this);
         found_person_head_layout.setOnClickListener(this);
         found_briefcase_layout.setOnClickListener(this);

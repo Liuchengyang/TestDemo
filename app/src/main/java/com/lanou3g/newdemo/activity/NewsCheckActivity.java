@@ -23,7 +23,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.lanou3g.newdemo.R;
 import com.lanou3g.newdemo.base.BaseAty;
-import com.lanou3g.newdemo.db.RecordSQLiteOpenHelper;
+import com.lanou3g.newdemo.db.CheckSQLiteOpenHelper;
 
 import com.lanou3g.newdemo.news.adapter.NewsCheckAdapter;
 import com.lanou3g.newdemo.news.bean.NewsCheckBean;
@@ -63,7 +63,7 @@ public class NewsCheckActivity extends BaseAty implements View.OnClickListener {
     private TextView list_search_history;
 
     private SQLiteDatabase db;
-    private RecordSQLiteOpenHelper helper = new RecordSQLiteOpenHelper(this);
+    private CheckSQLiteOpenHelper helper = new CheckSQLiteOpenHelper(this);
 
     private ListView listView;
     private ListView listViewTwo;

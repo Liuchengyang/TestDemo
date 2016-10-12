@@ -1,8 +1,12 @@
-package com.lanou3g.newdemo.db;
+package com.lanou3g.newdemo.message.secondinterface;
 
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
+import android.content.Intent;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+
+import com.lanou3g.newdemo.R;
+import com.lanou3g.newdemo.base.BaseAty;
 
 /**
  * 　　　　　　　　┏┓　　　┏┓+ +
@@ -29,21 +33,39 @@ import android.database.sqlite.SQLiteOpenHelper;
  * <p>
  * Created by 刘城羊 on 16/7/10.
  */
-public class RecordSQLiteOpenHelper extends SQLiteOpenHelper {
-    private static String name = "searchRecord.db";
-    private static Integer version = 1;
-    public RecordSQLiteOpenHelper(Context context) {
-        super(context, name, null, version);
+public class DirectMesActivity  extends BaseAty implements View.OnClickListener {
+    private RelativeLayout activity_direct_focus_layout;
+    private ImageView activity_direct_message_back;
+    @Override
+    protected int setLayout() {
+        return R.layout.activity_direct_message;
     }
 
     @Override
-    public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL("create table records ( id integer primary key autoincrement , name varchar ( 200 ) )");
+    protected void initView() {
+        activity_direct_focus_layout = (RelativeLayout) findViewById(R.id.activity_direct_focus_layout);
+        activity_direct_message_back = (ImageView) findViewById(R.id.activity_direct_message_back);
 
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+    protected void initData() {
+        activity_direct_focus_layout.setOnClickListener(this);
+        activity_direct_message_back.setOnClickListener(this);
+
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.activity_direct_focus_layout:
+                Intent intent  =new Intent(DirectMesActivity.this,FocusMesActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.activity_direct_message_back:
+                finish();
+                break;
+        }
 
     }
 }

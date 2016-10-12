@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="消息"
-            android:textSize="20dp" />
+            android:textSize="15dp" />
     </RelativeLayout>
 
     <TextView
@@ -23,7 +23,10 @@
         android:layout_height="1dp"
         android:background="@android:color/darker_gray" />
 
+
+
     <RelativeLayout
+        android:id="@+id/mess_direct_messages_layout"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:layout_width="match_parent"
@@ -31,14 +34,14 @@
         <ImageView
             android:layout_marginLeft="10dp"
             android:id="@+id/mess_direct_messages_img"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:background="@mipmap/direct_messages"/>
         <TextView
             android:id="@+id/mess_direct_messages_text"
             android:layout_toRightOf="@+id/mess_direct_messages_img"
             android:layout_marginLeft="5dp"
-            android:textSize="15sp"
+            android:textSize="12sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="私信"/>
@@ -49,7 +52,7 @@
             android:layout_below="@+id/mess_direct_messages_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="12sp"
+            android:textSize="10sp"
             android:text="0条待处理消息"/>
 
     </RelativeLayout>
@@ -61,6 +64,7 @@
         android:background="@android:color/darker_gray" />
 
     <RelativeLayout
+        android:id="@+id/mess_comments_layout"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:layout_width="match_parent"
@@ -68,15 +72,15 @@
         <ImageView
             android:layout_marginLeft="10dp"
             android:id="@+id/mess_comments_img"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:background="@mipmap/comments"/>
         <TextView
             android:id="@+id/mess_comments_text"
             android:layout_toRightOf="@+id/mess_comments_img"
             android:layout_centerVertical="true"
             android:layout_marginLeft="5dp"
-            android:textSize="15sp"
+            android:textSize="12sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="评论"/>
@@ -89,6 +93,7 @@
         android:background="@android:color/darker_gray" />
 
     <RelativeLayout
+        android:id="@+id/mess_praise_layout"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:layout_width="match_parent"
@@ -96,14 +101,14 @@
         <ImageView
             android:layout_marginLeft="10dp"
             android:id="@+id/mess_praise_img"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:background="@mipmap/praise"/>
         <TextView
             android:id="@+id/mess_praise_text"
             android:layout_toRightOf="@+id/mess_praise_img"
             android:layout_marginLeft="5dp"
-            android:textSize="15sp"
+            android:textSize="12sp"
             android:layout_centerVertical="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -118,6 +123,7 @@
         android:background="@android:color/darker_gray" />
 
     <RelativeLayout
+        android:id="@+id/mess_assistant_layout"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:layout_width="match_parent"
@@ -125,15 +131,15 @@
         <ImageView
             android:layout_marginLeft="10dp"
             android:id="@+id/mess_assistant_img"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:background="@mipmap/assistant"/>
         <TextView
 
             android:id="@+id/mess_assistant_text"
             android:layout_toRightOf="@+id/mess_assistant_img"
             android:layout_marginLeft="5dp"
-            android:textSize="15sp"
+            android:textSize="12sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="客服助手"/>
@@ -144,7 +150,7 @@
             android:layout_below="@+id/mess_assistant_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="12sp"
+            android:textSize="10sp"
             android:text="快速及时为你解决问题"/>
 
     </RelativeLayout>
@@ -155,6 +161,7 @@
         android:background="@android:color/darker_gray" />
 
     <RelativeLayout
+        android:id="@+id/mess_other_layout"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:layout_width="match_parent"
@@ -162,14 +169,14 @@
         <ImageView
             android:layout_marginLeft="10dp"
             android:id="@+id/mess_other_img"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:background="@mipmap/other"/>
         <TextView
             android:id="@+id/mess_other_text"
             android:layout_toRightOf="@+id/mess_other_img"
             android:layout_marginLeft="5dp"
-            android:textSize="15sp"
+            android:textSize="12sp"
             android:layout_centerVertical="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -177,6 +184,10 @@
 
 
     </RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray" />
 
 
 

@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -30,6 +32,7 @@ import com.lanou3g.newdemo.news.adapter.NewsLBAdapter;
 import com.lanou3g.newdemo.news.adapter.NewsListAdapter;
 import com.lanou3g.newdemo.news.bean.NewsLBBean;
 import com.lanou3g.newdemo.news.bean.NewsListBean;
+import com.lanou3g.newdemo.srcollView.RefreshLayout;
 import com.lanou3g.newdemo.volley.VolleySingleton;
 
 import java.util.ArrayList;
@@ -83,9 +86,13 @@ public class NewsFragment extends BaseFragment implements View.OnClickListener, 
     private ImageView iv_height;
     private ImageView iv_learn;
     private ImageView iv_tv;
+    private TextView iv_video;
     private NewsLBBean newsLBBean;
 
     private ImageView news_item_image, news_check_img;
+
+    private RefreshLayout refreshLayout;
+    private int i;
 
     @Override
     protected int setLayout() {
@@ -115,7 +122,10 @@ public class NewsFragment extends BaseFragment implements View.OnClickListener, 
         iv_height = (ImageView) view.findViewById(R.id.iv_height);
         iv_learn = (ImageView) view.findViewById(R.id.iv_learn);
         iv_tv = (ImageView) view.findViewById(R.id.iv_tv);
+        iv_video = (TextView) view.findViewById(R.id.iv_video);
         news_check_img = (ImageView) view.findViewById(R.id.news_check_img);
+
+        refreshLayout = (RefreshLayout) view.findViewById(R.id.swipe_layout);
 
 
         news_check_img.setOnClickListener(this);
@@ -127,6 +137,7 @@ public class NewsFragment extends BaseFragment implements View.OnClickListener, 
         iv_height.setOnClickListener(this);
         iv_learn.setOnClickListener(this);
         iv_tv.setOnClickListener(this);
+        iv_video.setOnClickListener(this);
         listView.setOnItemClickListener(this);
 
 
@@ -134,11 +145,13 @@ public class NewsFragment extends BaseFragment implements View.OnClickListener, 
 
     @Override
     protected void initData() {
+
         newsListAdapter = new NewsLBAdapter(getContext());
         newsAdapter = new NewsListAdapter(getContext());
         initLunBo();
         initSpeed();
         initList();
+        initRefreshMethod();
         news_check_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -162,6 +175,55 @@ public class NewsFragment extends BaseFragment implements View.OnClickListener, 
         });
 
 
+    }
+
+    private void initRefreshMethod() {
+        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                initList();
+                Toast.makeText(mContext, "刷新数据", Toast.LENGTH_SHORT).show();
+                refreshLayout.setRefreshing(false);
+            }
+        });
+
+
+
+        refreshLayout.setmOnLoadListener(new RefreshLayout.OnLoadListener() {
+            @Override
+            public void onLoad() {
+                Toast.makeText(mContext, "加载", Toast.LENGTH_SHORT).show();
+                refreshLayout.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        i = 0;
+                        i++;
+                        VolleySingleton.addRequest(StringUrl.STRINGS[i], NewsListBean.class,
+                                new Response.Listener<NewsListBean>() {
+                                    @Override
+                                    public void onResponse(NewsListBean response) {
+                                        newsAdapter.setNewsListBean(response);
+                                        newsAdapter.notifyDataSetChanged();
+                                        refreshLayout.setRefreshing(false);
+
+
+                                    }
+                                }, new Response.ErrorListener() {
+                                    @Override
+                                    public void onErrorResponse(VolleyError error) {
+
+                                    }
+                                });
+
+
+
+
+
+
+                    }
+                },1500);
+            }
+        });
     }
 
     private void initList() {
@@ -317,6 +379,10 @@ public class NewsFragment extends BaseFragment implements View.OnClickListener, 
                 request(StringUrl.stringFragmentNewsLearn);
                 break;
 
+            case R.id.iv_video:
+                Intent intentVideo =new Intent(getActivity(),VideoActivity.class);
+                startActivity(intentVideo);
+                break;
         }
 
 

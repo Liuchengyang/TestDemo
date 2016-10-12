@@ -181,7 +181,7 @@ public class FoundImgActivity extends BaseAty implements View.OnClickListener {
                 popupWindowTime = new PopupWindow(this);
                 popupWindowTime.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
                 popupWindowTime.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
-                View viewTime  =LayoutInflater.from(this).inflate(R.layout.found_time_item,null);
+                View viewTime = LayoutInflater.from(this).inflate(R.layout.found_time_item, null);
                 viewTime.setFocusable(true);
                 viewTime.setFocusableInTouchMode(true);
                 popupWindowTime.setContentView(viewTime);
@@ -203,16 +203,10 @@ public class FoundImgActivity extends BaseAty implements View.OnClickListener {
                     @Override
                     public boolean onTouch(View view, MotionEvent motionEvent) {
                         closePopupWindow();
-                        activity_found_time.setTextColor(Color.BLACK);
+
                         return false;
                     }
                 });
-
-
-
-
-
-
 
 
                 break;
@@ -288,12 +282,14 @@ public class FoundImgActivity extends BaseAty implements View.OnClickListener {
     }
 
     private void closePopupWindow() {
+        activity_found_time.setTextColor(Color.BLACK);
         if (popupWindowTime != null && popupWindowTime.isShowing()) {
             popupWindowTime.dismiss();
             popupWindowTime = null;
             WindowManager.LayoutParams params = this.getWindow().getAttributes();
             params.alpha = 1f;
             this.getWindow().setAttributes(params);
+
         }
 
     }

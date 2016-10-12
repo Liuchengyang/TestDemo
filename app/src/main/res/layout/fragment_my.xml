@@ -65,6 +65,7 @@
                 android:layout_height="10dp" />
 
             <RelativeLayout
+                android:id="@+id/my_the_order_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#ffffffff">
@@ -100,6 +101,7 @@
                 android:layout_height="10dp" />
 
             <RelativeLayout
+                android:id="@+id/my_information_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#ffffffff">

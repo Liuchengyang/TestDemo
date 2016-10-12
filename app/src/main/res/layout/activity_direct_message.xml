@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/activity_direct_message_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/back1"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textSize="15sp"
+            android:text="私信"/>
+    </RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#dd8b8a8a"/>
+    <RelativeLayout
+        android:id="@+id/activity_direct_focus_layout"
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/activity_direct_img"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@mipmap/direct_messages" />
+        <TextView
+            android:layout_toRightOf="@+id/activity_direct_img"
+            android:layout_width="wrap_content"
+            android:id="@+id/activity_direct_focus_text"
+            android:layout_marginLeft="5dp"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:text="未关注人私信"/>
+        <TextView
+            android:layout_toRightOf="@+id/activity_direct_img"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_below="@+id/activity_direct_focus_text"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:text="0条待处理消息"/>
+    </RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#dda3a0a0"/>
+
+</LinearLayout>
