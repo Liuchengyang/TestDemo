@@ -28,4 +28,7 @@ dependencies {
     compile 'com.squareup.picasso:picasso:2.3.2'
     compile 'eu.the4thfloor.volley:com.android.volley:2015.05.28'
     compile 'com.linsea:universalvideoview:1.1.0@aar'
+    compile files('/Users/dllo/Desktop/newDemo/lib/libs/ShareSDK-Core-2.7.7.jar')
+    compile files('libs/ShareSDK-Core-2.7.7.jar')
+    compile files('libs/Bmob_Push_V1.0.0beta_20160627.jar')
 }

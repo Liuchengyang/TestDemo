@@ -44,6 +44,7 @@ public class InvestFragment extends BaseFragment {
     private ViewPager viewPager;
     private InvestAdapter investAdapter;
     private ImageView invest_check_img;
+    private ImageView invest_gift_img;
 
     @Override
     protected int setLayout() {
@@ -55,6 +56,7 @@ public class InvestFragment extends BaseFragment {
         viewPager = (ViewPager) view.findViewById(R.id.invest_view_pager);
         tabLayout = (TabLayout) view.findViewById(R.id.invest_tab);
         invest_check_img = (ImageView) view.findViewById(R.id.invest_check_img);
+        invest_gift_img = (ImageView) view.findViewById(R.id.invest_gift_img);
 
 
 
@@ -78,6 +80,15 @@ public class InvestFragment extends BaseFragment {
         viewPager.setAdapter(investAdapter);
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.setTabTextColors(Color.BLUE,Color.GREEN);
+
+        invest_gift_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentGift =new Intent(getActivity(),GiftActivity.class);
+                startActivity(intentGift);
+
+            }
+        });
 
     }
 }

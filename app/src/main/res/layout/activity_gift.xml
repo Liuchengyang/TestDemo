@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<RelativeLayout
+    android:id="@+id/gift_activity_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+</RelativeLayout>
+    <ImageView
+        android:id="@+id/wrong_back"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="60dp"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/wrong_back"/>
+
+    <TextView
+        android:id="@+id/wrong_back_text"
+        android:layout_below="@+id/wrong_back"
+        android:layout_marginRight="76dp"
+        android:layout_width="1dp"
+        android:layout_alignParentRight="true"
+        android:layout_height="60dp"
+        android:background="#dddcdcdf"/>
+    <ImageView
+        android:layout_below="@+id/wrong_back_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@mipmap/iv_indstry_intro"/>
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="85dp"
+        android:textSize="30sp"
+        android:background="@android:color/holo_red_light"
+        android:text="认证投资人"/>
+
+
+
+
+
+
+
+
+</RelativeLayout>

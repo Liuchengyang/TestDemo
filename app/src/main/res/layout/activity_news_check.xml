@@ -41,7 +41,7 @@
         android:layout_height="1dp"
         android:background="#dd868383"/>
 
-    <ListView
+     <ListView
         android:id="@+id/news_check_list_view1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

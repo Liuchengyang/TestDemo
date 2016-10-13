@@ -74,6 +74,8 @@ public class NewsCheckActivity extends BaseAty implements View.OnClickListener {
     private String stringUrl;
     private TextView check_remove_text;
     private SimpleCursorAdapter simpleCursorAdapter;
+    private View headView2;
+    private View footView2;
 
 
     @Override
@@ -94,8 +96,8 @@ public class NewsCheckActivity extends BaseAty implements View.OnClickListener {
 
 
         listViewTwo = (ListView) findViewById(R.id.news_check_list_view2);
-        View headView2 = LayoutInflater.from(this).inflate(R.layout.list_view_item, null);
-        View footView2 = LayoutInflater.from(this).inflate(R.layout.list_foot_item, null);
+        headView2 = LayoutInflater.from(this).inflate(R.layout.list_view_item, null);
+        footView2 = LayoutInflater.from(this).inflate(R.layout.list_foot_item, null);
         check_remove_text = (TextView) footView2.findViewById(R.id.check_remove_text);
         listViewTwo.addHeaderView(headView2);
         listViewTwo.addFooterView(footView2);
@@ -258,8 +260,8 @@ public class NewsCheckActivity extends BaseAty implements View.OnClickListener {
                 break;
             case R.id.check_remove_text:
                 if (listViewTwo == null) {
-                    check_remove_text.setVisibility(View.INVISIBLE);
-                    list_search_history.setVisibility(View.INVISIBLE);
+                    listViewTwo.removeHeaderView(headView2);
+                    listViewTwo.removeFooterView(footView2);
 
                 }
 
