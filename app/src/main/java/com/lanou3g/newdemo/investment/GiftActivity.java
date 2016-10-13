@@ -64,6 +64,7 @@ public class GiftActivity  extends Activity{
             @Override
             public void onClick(View view) {
                 Toast.makeText(GiftActivity.this, "提示：点击窗口外部关闭窗口！", Toast.LENGTH_SHORT).show();
+
             }
         });
         wrong_back.setOnClickListener(new View.OnClickListener() {

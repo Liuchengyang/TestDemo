@@ -84,8 +84,12 @@ public class InvestFragment extends BaseFragment {
         invest_gift_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentGift =new Intent(getActivity(),GiftActivity.class);
-                startActivity(intentGift);
+             startActivity( new Intent(getActivity(),GiftActivity.class));
+
+                invest_gift_img.setVisibility(View.INVISIBLE);
+
+
+
 
             }
         });
