@@ -1,7 +1,10 @@
 package com.lanou3g.newdemo.investment.twoFragment;
 
+import android.content.Intent;
+import android.renderscript.Int2;
 import android.support.v4.app.Fragment;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.android.volley.RequestQueue;
@@ -11,6 +14,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.lanou3g.newdemo.R;
+import com.lanou3g.newdemo.activity.InvestAllActivity;
 import com.lanou3g.newdemo.base.BaseFragment;
 import com.lanou3g.newdemo.base.StringUrl;
 import com.lanou3g.newdemo.investment.adapter.InvestAdapter;
@@ -76,6 +80,22 @@ public class InvestAllFragment extends BaseFragment {
             }
         });
         queue.add(stringRequest);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent =new Intent(getActivity(),InvestAllActivity.class);
+                InvestAllBean.DataBean.DataBean1 investAllBean = (InvestAllBean.DataBean.DataBean1) adapterView.getItemAtPosition(i);
+                String title =investAllBean.getCompany_name();
+                intent.putExtra("title",title);
+                String url =investAllBean.getPayUrl();
+                intent.putExtra("url",url);
+                startActivity(intent);
+
+
+
+            }
+        });
 
     }
 }

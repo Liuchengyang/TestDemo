@@ -30,6 +30,7 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -101,6 +102,8 @@ public class NewsListActivity extends BaseAty implements View.OnClickListener {
 
     private PopupWindow mPopupWindow;
     private String downUrl;
+    private CheckBox iv_favorite;
+
 
     @Override
     protected int setLayout() {
@@ -119,6 +122,7 @@ public class NewsListActivity extends BaseAty implements View.OnClickListener {
         tv_context = (TextView) findViewById(R.id.tv_context);
         iv_pic = (ImageView) findViewById(R.id.iv_pic);
         iv_brief = (TextView) findViewById(R.id.iv_brief);
+        iv_favorite = (CheckBox) findViewById(R.id.iv_favorite);
 
 
         iv_down = (ImageView) findViewById(R.id.iv_down);
@@ -132,6 +136,7 @@ public class NewsListActivity extends BaseAty implements View.OnClickListener {
         iv_down.setOnClickListener(this);
         iv_share.setOnClickListener(this);
         news_list_relative_layout.setOnClickListener(this);
+
 
 
     }
@@ -181,6 +186,18 @@ public class NewsListActivity extends BaseAty implements View.OnClickListener {
             @Override
             public void onErrorResponse(VolleyError error) {
 
+            }
+        });
+
+
+
+        iv_favorite.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(b){
+                    Toast.makeText(NewsListActivity.this, "收藏", Toast.LENGTH_SHORT).show();
+
+                }
             }
         });
 
@@ -398,7 +415,7 @@ public class NewsListActivity extends BaseAty implements View.OnClickListener {
         // titleUrl是标题的网络链接，仅在人人网和QQ空间使用
         oks.setTitleUrl("http://sharesdk.cn");
         // text是分享文本，所有平台都需要这个字段
-        oks.setText("我是分享文本");
+        oks.setText("宇宙无敌");
         //分享网络图片，新浪微博分享网络图片需要通过审核后申请高级写入接口，否则请注释掉测试新浪微博
         oks.setImageUrl("http://f1.sharesdk.cn/imgs/2014/02/26/owWpLZo_638x960.jpg");
         // imagePath是图片的本地路径，Linked-In以外的平台都支持此参数

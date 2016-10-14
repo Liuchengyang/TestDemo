@@ -15,6 +15,7 @@ import com.lanou3g.newdemo.activity.OrderActivity;
 import com.lanou3g.newdemo.base.BaseFragment;
 
 
+
 /**
  * 　　　　　　　　┏┓　　　┏┓+ +
  * 　　　　　　　┏┛┻━━━┛┻┓ + +
@@ -45,6 +46,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
     private ImageView my_system_img;
     private RelativeLayout my_relative_layout;
     private RelativeLayout my_the_order_layout;
+    private RelativeLayout my_information_layout;
     @Override
     protected int setLayout() {
         return R.layout.fragment_my;
@@ -57,6 +59,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
         my_relative_layout = (RelativeLayout) view.findViewById(R.id.my_relative_layout);
 
         my_the_order_layout = (RelativeLayout) view.findViewById(R.id.my_the_order_layout);
+        my_information_layout = (RelativeLayout) view.findViewById(R.id.my_information_layout);
 
     }
 
@@ -66,6 +69,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
         my_system_img.setOnClickListener(this);
         my_relative_layout.setOnClickListener(this);
         my_the_order_layout.setOnClickListener(this);
+        my_information_layout.setOnClickListener(this);
 
 
 
@@ -90,6 +94,10 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
             case R.id.my_the_order_layout:
                 Intent intentOrder  =new Intent(getActivity(),OrderActivity.class);
                 startActivity(intentOrder);
+                break;
+            case R.id.my_information_layout:
+
+
                 break;
 
         }

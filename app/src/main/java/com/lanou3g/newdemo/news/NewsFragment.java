@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -88,6 +89,7 @@ public class NewsFragment extends BaseFragment implements View.OnClickListener, 
     private ImageView iv_tv;
     private TextView iv_video;
     private NewsLBBean newsLBBean;
+    private LinearLayout drawer;
 
     private ImageView news_item_image, news_check_img;
 
@@ -102,6 +104,8 @@ public class NewsFragment extends BaseFragment implements View.OnClickListener, 
 
     @Override
     protected void initView(View view) {
+        drawer = (LinearLayout) view.findViewById(R.id.drawer);
+
         news_more_img = (ImageView) view.findViewById(R.id.news_more_img);
         iv_back = (ImageView) view.findViewById(R.id.iv_back);
         drawerLayout = (DrawerLayout) view.findViewById(R.id.news_drawer);
@@ -128,6 +132,7 @@ public class NewsFragment extends BaseFragment implements View.OnClickListener, 
         refreshLayout = (RefreshLayout) view.findViewById(R.id.swipe_layout);
 
 
+        drawer.setOnClickListener(this);
         news_check_img.setOnClickListener(this);
         iv_all.setOnClickListener(this);
         iv_early.setOnClickListener(this);
@@ -145,6 +150,7 @@ public class NewsFragment extends BaseFragment implements View.OnClickListener, 
 
     @Override
     protected void initData() {
+
 
         newsListAdapter = new NewsLBAdapter(getContext());
         newsAdapter = new NewsListAdapter(getContext());
@@ -173,6 +179,9 @@ public class NewsFragment extends BaseFragment implements View.OnClickListener, 
 
             }
         });
+
+
+
 
 
     }
@@ -383,6 +392,9 @@ public class NewsFragment extends BaseFragment implements View.OnClickListener, 
                 Intent intentVideo =new Intent(getActivity(),VideoActivity.class);
                 startActivity(intentVideo);
                 break;
+            case R.id.drawer:
+                //不会被击穿
+                break;
         }
 
 
@@ -412,6 +424,7 @@ public class NewsFragment extends BaseFragment implements View.OnClickListener, 
         intent.putExtra("downUrl",downUrl);
 
         startActivity(intent);
+
 
 
     }

@@ -19,7 +19,7 @@
     <application
         android:name=".app.MyApp"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/k_mess"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -32,6 +32,8 @@
         </activity>
 
         <activity android:name=".investment.GiftActivity" android:theme="@style/MyDialogStyleBottom"/>
+        <activity android:name=".activity.InvestAllActivity"/>
+
         <activity android:name=".news.VideoActivity"/>
         <activity android:name=".MainActivity"/>
         <activity android:name=".activity.MessActivity"/>
