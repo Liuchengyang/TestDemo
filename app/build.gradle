@@ -31,4 +31,5 @@ dependencies {
     compile files('/Users/dllo/Desktop/newDemo/lib/libs/ShareSDK-Core-2.7.7.jar')
     compile files('libs/ShareSDK-Core-2.7.7.jar')
     compile files('libs/Bmob_Push_V1.0.0beta_20160627.jar')
+    compile files('libs/jpush-android-2.2.0.jar')
 }
