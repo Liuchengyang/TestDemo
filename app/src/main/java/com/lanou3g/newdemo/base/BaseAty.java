@@ -5,6 +5,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import cn.jpush.android.api.JPushInterface;
+
 /**
  * 　　　　　　　　┏┓　　　┏┓+ +
  * 　　　　　　　┏┛┻━━━┛┻┓ + +
@@ -24,13 +26,22 @@ import android.view.View;
  * 　　　　　　　　　┃　 　　┗━━━┓ + +
  * 　　　　　　　　　┃ 　　　　　　　┣┓
  * 　　　　　　　　　┃ 　　　　　　　┏┛
- * 　　　　　　　　　┗┓┓┏━┳┓┏┛ + + + +
+ * 　　　　　　　　　┗┓┓┏━┳┓┏┛ + + + +大傻逼大傻逼大傻逼大傻逼
+ *
+ *
+ *
+ *
+ *
+ *
  * 　　　　　　　　　　┃┫┫　┃┫┫
  * 　　　　　　　　　　┗┻┛　┗┻┛+ + + +
  * <p/>
  * Created by 刘城羊 on 16/7/10.
  * Activity的基类
  */
+
+
+
 public abstract class BaseAty extends AppCompatActivity{
 
     @Override
@@ -57,7 +68,6 @@ public abstract class BaseAty extends AppCompatActivity{
      *
      */
     protected abstract  void initView();
-
     /**
      * 初始化数据 例如拉取网络数据,获取操作一些
      */
@@ -74,4 +84,17 @@ public abstract class BaseAty extends AppCompatActivity{
         return (T) findViewById(id);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        JPushInterface.onResume(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        JPushInterface.onPause(this);
+    }
 }

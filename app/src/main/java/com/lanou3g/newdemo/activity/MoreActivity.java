@@ -50,6 +50,12 @@ public class MoreActivity extends Activity implements View.OnClickListener {
     private SeekBar seekBar;
     private RelativeLayout relativeLayout;
 
+    public static final String ACTION_CHANGE_SMALL = "com.lanou3g.newdemo.activity.ACTION_CHANGE_SMALL";
+    public static final String ACTION_CHANGE_MIDDLE = "com.lanou3g.newdemo.activity.ACTION_CHANGE_MIDDLE";
+    public static final String ACTION_CHANGE_BIG = "com.lanou3g.newdemo.activity.ACTION_CHANGE_BIG";
+    public static final String ACTION_CHANGE_SUPER = "com.lanou3g.newdemo.activity.ACTION_CHANGE_SUPER";
+    private Intent intent;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +63,7 @@ public class MoreActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_more);
 
 
+        intent =new Intent();
         relativeLayout = (RelativeLayout) findViewById(R.id.activity_more_layout);
         textViewSmall = (TextView) findViewById(R.id.tv_small);
         textViewMiddle = (TextView) findViewById(R.id.tv_middle);
@@ -86,6 +93,24 @@ public class MoreActivity extends Activity implements View.OnClickListener {
         @Override
         public void onClick (View view){
             switch (view.getId()) {
+                case R.id.tv_small:
+                    //在过滤器中添加action
+                    intent.setAction(ACTION_CHANGE_SMALL);
+                    sendBroadcast(intent);
+                    break;
+                case R.id.tv_middle:
+                    intent.setAction(ACTION_CHANGE_MIDDLE);
+                    sendBroadcast(intent);
+                    break;
+                case R.id.tv_big:
+                    intent.setAction(ACTION_CHANGE_BIG);
+                    sendBroadcast(intent);
+                    break;
+                case R.id.tv_verybig:
+                    intent.setAction(ACTION_CHANGE_SUPER);
+                    sendBroadcast(intent);
+                    break;
+
 
 
             }

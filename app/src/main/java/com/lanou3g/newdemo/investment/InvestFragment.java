@@ -86,7 +86,7 @@ public class InvestFragment extends BaseFragment {
             public void onClick(View view) {
              startActivity( new Intent(getActivity(),GiftActivity.class));
 
-                invest_gift_img.setVisibility(View.INVISIBLE);
+
 
 
 

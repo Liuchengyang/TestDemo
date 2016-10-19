@@ -1,8 +1,11 @@
 package com.lanou3g.newdemo.activity;
 
+
 import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
@@ -100,9 +103,12 @@ public class NewsListActivity extends BaseAty implements View.OnClickListener {
     private ImageView iv_back, iv_comment, iv_share, iv_more;
     private ImageView iv_down;
 
-    private PopupWindow mPopupWindow;
-    private String downUrl;
-    private CheckBox iv_favorite;
+
+        private PopupWindow mPopupWindow;
+        private String downUrl;
+        private CheckBox iv_favorite;
+
+    private ChangeTextSizeReceiver changeTextSizeReceiver;
 
 
     @Override
@@ -114,6 +120,14 @@ public class NewsListActivity extends BaseAty implements View.OnClickListener {
     protected void initView() {
 
         ShareSDK.initSDK(this);
+        changeTextSizeReceiver =new ChangeTextSizeReceiver();
+        IntentFilter intentFilter =new IntentFilter();
+        intentFilter.addAction(MoreActivity.ACTION_CHANGE_SMALL);
+        intentFilter.addAction(MoreActivity.ACTION_CHANGE_MIDDLE);
+        intentFilter.addAction(MoreActivity.ACTION_CHANGE_BIG);
+        intentFilter.addAction(MoreActivity.ACTION_CHANGE_SUPER);
+        registerReceiver(changeTextSizeReceiver,intentFilter);
+
 
         news_list_relative_layout = (RelativeLayout) findViewById(R.id.news_list_relative_layout);
         tv_time = (TextView) findViewById(R.id.tv_time);
@@ -195,7 +209,7 @@ public class NewsListActivity extends BaseAty implements View.OnClickListener {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(b){
-                    Toast.makeText(NewsListActivity.this, "收藏", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(com.lanou3g.newdemo.activity.NewsListActivity.this, "收藏", Toast.LENGTH_SHORT).show();
 
                 }
             }
@@ -211,7 +225,7 @@ public class NewsListActivity extends BaseAty implements View.OnClickListener {
                     @Override
                     public void run() {
                         try {
-                            Bitmap bitmap = Picasso.with(NewsListActivity.this).load(s).get();
+                            Bitmap bitmap = Picasso.with(com.lanou3g.newdemo.activity.NewsListActivity.this).load(s).get();
                             runOnUiThread(new MyRunnable(bitmap) {
                                 @Override
                                 public void run() {
@@ -258,7 +272,7 @@ public class NewsListActivity extends BaseAty implements View.OnClickListener {
                 finish();
                 break;
             case R.id.iv_more:
-                Intent intent = new Intent(NewsListActivity.this, MoreActivity.class);
+                Intent intent = new Intent(com.lanou3g.newdemo.activity.NewsListActivity.this, MoreActivity.class);
                 startActivity(intent);
                 break;
 
@@ -281,6 +295,9 @@ public class NewsListActivity extends BaseAty implements View.OnClickListener {
 
 
     }
+
+
+
 
 
 
@@ -347,13 +364,13 @@ public class NewsListActivity extends BaseAty implements View.OnClickListener {
         ColorDrawable dw = new ColorDrawable(0x00000000);
         //设置SelectPicPopupWindow弹出窗体的背景
        mPopupWindow.setBackgroundDrawable(dw);
-        backgroundAlpha(NewsListActivity.this,0.5f);//0.0-1.0
+        backgroundAlpha(com.lanou3g.newdemo.activity.NewsListActivity.this,0.5f);//0.0-1.0
         mPopupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
 
             @Override
             public void onDismiss() {
                 // TODO Auto-generated method stub
-                backgroundAlpha(NewsListActivity.this, 1f);
+                backgroundAlpha(com.lanou3g.newdemo.activity.NewsListActivity.this, 1f);
             }
         });
 
@@ -432,6 +449,33 @@ public class NewsListActivity extends BaseAty implements View.OnClickListener {
 // 启动分享GUI
         oks.show(this);
     }
+    public class ChangeTextSizeReceiver extends BroadcastReceiver {
 
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            switch (action) {
+                case MoreActivity.ACTION_CHANGE_SMALL:
+                    tv_context.setTextSize(10);
+                    break;
+                case MoreActivity.ACTION_CHANGE_MIDDLE:
+                    tv_context.setTextSize(20);
+                    break;
+                case MoreActivity.ACTION_CHANGE_BIG:
+                    tv_context.setTextSize(30);
+                    break;
+                case MoreActivity.ACTION_CHANGE_SUPER:
+                    tv_context.setTextSize(60);
+                    break;
+            }
+        }
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(changeTextSizeReceiver);
+
+    }
 }

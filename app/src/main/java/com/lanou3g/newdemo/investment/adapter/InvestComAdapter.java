@@ -87,7 +87,7 @@ public class InvestComAdapter extends BaseAdapter {
         viewHolder. textViewing.setText(bean.getData().getData().get(i).getFundStatus().getDesc());
 
         viewHolder.textViewmoney.setText("已募资" + (int) (bean.getData().getData().get(i).getRate() * 100) + "%");
-        viewHolder.progressBar.setProgress((int)(bean.getData().getData().get(i).getRate() * 100));
+//        viewHolder.progressBar.setProgress((int)(bean.getData().getData().get(i).getRate() * 100));
 
         return view;
     }

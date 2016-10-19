@@ -205,7 +205,6 @@ public class NewsFragment extends BaseFragment implements View.OnClickListener, 
                 refreshLayout.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        i = 0;
                         i++;
                         VolleySingleton.addRequest(StringUrl.STRINGS[i], NewsListBean.class,
                                 new Response.Listener<NewsListBean>() {
